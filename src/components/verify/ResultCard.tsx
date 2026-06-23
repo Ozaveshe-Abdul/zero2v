@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { Card } from '@/components/ui/Card';
+import { exportSingleResultPDF } from '@/lib/pdfExport';
 
 interface ResultData {
   fullName: string;
@@ -29,8 +30,7 @@ interface ResultCardProps {
 
 export function ResultCard({ data, onReset }: ResultCardProps) {
   const handleDownloadPDF = () => {
-    alert('PDF Export coming soon!');
-    // This will connect to src/lib/pdfExport.ts in Phase 8
+    exportSingleResultPDF(data);
   };
 
   return (

@@ -25,7 +25,7 @@ export function ConsentCheckbox({
             checked={checked}
             onChange={(e) => onChange(e.target.checked)}
             disabled={disabled}
-            defaultChecked={false}
+
           />
           <div className="w-5 h-5 bg-white border-2 border-[#E5E7EB] rounded peer-focus:ring-2 peer-focus:ring-[#0D4C2E]/20 peer-checked:bg-[#0D4C2E] peer-checked:border-[#0D4C2E] transition-all flex items-center justify-center">
             {checked && (
