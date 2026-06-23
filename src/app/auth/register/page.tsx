@@ -17,41 +17,43 @@ export default function RegisterPage() {
   const [loading, setLoading] = React.useState(false);
   const supabase = createClient();
 
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+    setError(null);
+
     if (password !== confirmPassword) {
-      setError("Passwords do not match!");
+      setError('Passwords do not match');
+      setLoading(false);
       return;
     }
-    setError(null);
-    setLoading(true);
 
     try {
-      const { error: signUpError } = await supabase.auth.signUp({
+      const { error } = await supabase.auth.signUp({
         email,
         password,
         options: {
           data: {
             full_name: fullName,
           },
+          emailRedirectTo: `${window.location.origin}/auth/callback`,
         },
       });
 
-      if (signUpError) {
-        setError(signUpError.message);
+      if (error) {
+        setError(error.message);
         setLoading(false);
         return;
       }
 
-      // Supabase triggers will automatically create the profile row.
-      // Redirect to dashboard
-      router.push('/dashboard');
-      router.refresh();
+      router.push('/auth/login?registered=true');
     } catch (err: any) {
       setError(err?.message || 'An unexpected error occurred.');
       setLoading(false);
     }
   };
+
 
   return (
     <div className="relative min-h-screen bg-[#F7F5F0] flex flex-col font-sans antialiased text-[#1A1A1A] overflow-x-hidden select-none">
