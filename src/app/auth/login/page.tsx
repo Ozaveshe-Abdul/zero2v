@@ -16,19 +16,20 @@ export default function LoginPage() {
   const [loading, setLoading] = React.useState(false);
   const supabase = createClient();
 
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null);
     setLoading(true);
+    setError(null);
 
     try {
-      const { error: signInError } = await supabase.auth.signInWithPassword({
+      const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
 
-      if (signInError) {
-        setError(signInError.message);
+      if (error) {
+        setError(error.message);
         setLoading(false);
         return;
       }
@@ -40,6 +41,7 @@ export default function LoginPage() {
       setLoading(false);
     }
   };
+
 
   return (
     <div className="relative min-h-screen bg-[#F7F5F0] flex flex-col font-sans antialiased text-[#1A1A1A] overflow-x-hidden select-none">
