@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>zero2v History - Sovereign Trust Identity</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#eae7e7",
+                    "error": "#ba1a1a",
+                    "secondary": "#795900",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#0d4c2e",
+                    "inverse-primary": "#97d4ac",
+                    "background": "#fcf9f8",
+                    "surface-container-highest": "#e5e2e1",
+                    "tertiary-fixed-dim": "#c8c6c2",
+                    "on-tertiary": "#ffffff",
+                    "primary": "#00341c",
+                    "surface-dim": "#dcd9d9",
+                    "secondary-fixed-dim": "#f6be39",
+                    "on-secondary-container": "#715300",
+                    "inverse-on-surface": "#f3f0ef",
+                    "tertiary-container": "#42423f",
+                    "on-surface-variant": "#404942",
+                    "on-secondary-fixed": "#261a00",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "outline-variant": "#c0c9c0",
+                    "on-secondary-fixed-variant": "#5c4300",
+                    "on-primary-container": "#80bc95",
+                    "on-tertiary-fixed": "#1b1c19",
+                    "surface-container": "#f0eded",
+                    "on-primary-fixed": "#002110",
+                    "surface-tint": "#306949",
+                    "on-background": "#1c1b1b",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e5e2e1",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#ffc641",
+                    "tertiary": "#2c2c29",
+                    "on-primary-fixed-variant": "#145132",
+                    "primary-fixed": "#b3f1c7",
+                    "on-tertiary-container": "#afaeaa",
+                    "on-surface": "#1c1b1b",
+                    "on-tertiary-fixed-variant": "#474744",
+                    "tertiary-fixed": "#e4e2dd",
+                    "surface": "#fcf9f8",
+                    "secondary-fixed": "#ffdfa0",
+                    "surface-container-low": "#f6f3f2",
+                    "surface-bright": "#fcf9f8",
+                    "inverse-surface": "#313030",
+                    "on-primary": "#ffffff",
+                    "outline": "#707971",
+                    "primary-fixed-dim": "#97d4ac"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "gutter": "16px",
+                    "container-margin": "20px"
+            },
+            "fontFamily": {
+                    "label-caps": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg-mobile": ["Outfit"],
+                    "headline-lg": ["Outfit"],
+                    "display-lg": ["Outfit"],
+                    "data-mono": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "label-caps": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "data-mono": ["16px", {"lineHeight": "24px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .row-expanded {
+            grid-template-rows: 1fr;
+        }
+        .row-collapsed {
+            grid-template-rows: 0fr;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .bulk-bar-animate {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s linear;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- Side Navigation Bar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-primary dark:bg-primary-container shadow-xl flex flex-col py-xl z-50">
+<div class="px-lg mb-xl">
+<h1 class="text-headline-lg font-headline-lg font-bold text-on-primary">zero2v</h1>
+<p class="text-label-caps font-label-caps text-on-primary-fixed-variant opacity-70">Sovereign Trust Identity</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3 hover:bg-primary-fixed-variant/20 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3 hover:bg-primary-fixed-variant/20 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="font-body-md">NIN Verification</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3 hover:bg-primary-fixed-variant/20 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">layers</span>
+<span class="font-body-md">Batch Processing</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3 hover:bg-primary-fixed-variant/20 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">edit_document</span>
+<span class="font-body-md">Modification Orders</span>
+</a>
+<a class="text-secondary-fixed font-bold border-l-4 border-secondary-fixed pl-4 py-3 flex items-center gap-3 bg-primary-fixed-variant/10" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">history</span>
+<span class="font-body-md">Transactions</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3 hover:bg-primary-fixed-variant/20 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-body-md">Wallet</span>
+</a>
+</nav>
+<div class="px-lg mt-auto border-t border-on-primary-fixed-variant/20 pt-lg space-y-1">
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 py-2 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps">Settings</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 py-2 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span class="font-label-caps">Support</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 py-2 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-caps">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-64 min-h-screen relative">
+<!-- Top Navigation Bar -->
+<header class="full-width h-16 sticky top-0 z-40 bg-surface-container-lowest dark:bg-surface-dim border-b border-outline-variant shadow-sm flex justify-between items-center px-lg">
+<div class="flex items-center gap-md">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-primary/20 text-body-sm w-80" placeholder="Search transactions..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<button class="bg-primary text-on-primary px-lg py-2 rounded-full font-label-caps hover:bg-primary/90 transition-all">Fund Wallet</button>
+<div class="flex items-center gap-sm text-outline">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors">apps</span>
+</div>
+<div class="flex items-center gap-sm border-l border-outline-variant pl-lg">
+<div class="text-right">
+<p class="font-label-caps text-on-surface">Admin User</p>
+<p class="text-[10px] text-outline uppercase tracking-wider">Super Administrator</p>
+</div>
+<img alt="Administrator Profile" class="w-10 h-10 rounded-full border-2 border-primary-fixed shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9NoBomTDjJ9fOI_xmmEwtaPUT_XsFSwSar60zGo-ZmTVjduvlxI8OTJRY0oKX9mTLEIHImstYbwVBorjZTZXVwW8xfg1MH7A4qoD9hBRsg_Y9aVmiJIjL41Qg0fZlkvidIG6nIdckp0-3eh_qm_0Lrk4z4FhRxWTSgPutBvw01Elsb7N20IGvXoVWlXO_H5ZNAGUKz3r3NLVwxFPVmnEKNHwgHp8D5bO2_0rOOFU-uZ6gvvn15jh_h-m_YO7c7eRDuFS5IaM8Kw"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-xl space-y-xl">
+<!-- Header Section -->
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary">Verification History</h2>
+<p class="text-on-surface-variant font-body-sm">Audit logs and detailed records of all identity verification attempts.</p>
+</div>
+<div class="flex gap-sm">
+<button class="flex items-center gap-2 border border-outline px-md py-2 rounded-lg font-label-caps hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-md">calendar_today</span>
+                        Last 30 Days
+                    </button>
+<button class="flex items-center gap-2 border border-outline px-md py-2 rounded-lg font-label-caps hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-md">filter_list</span>
+                        Advanced Filters
+                    </button>
+</div>
+</div>
+<!-- Filter Chips -->
+<div class="flex flex-wrap gap-sm">
+<button class="px-lg py-1.5 rounded-full bg-primary-container text-on-primary-container font-label-caps border border-primary-container transition-all">All Verifications</button>
+<button class="px-lg py-1.5 rounded-full bg-surface-container text-on-surface-variant border border-outline-variant font-label-caps hover:border-primary transition-all">NIN Search</button>
+<button class="px-lg py-1.5 rounded-full bg-surface-container text-on-surface-variant border border-outline-variant font-label-caps hover:border-primary transition-all">Biometric Match</button>
+<button class="px-lg py-1.5 rounded-full bg-surface-container text-on-surface-variant border border-outline-variant font-label-caps hover:border-primary transition-all">BVN Linking</button>
+<button class="px-lg py-1.5 rounded-full bg-surface-container text-on-surface-variant border border-outline-variant font-label-caps hover:border-primary transition-all">Batch Processing</button>
+<button class="px-lg py-1.5 rounded-full bg-surface-container text-on-surface-variant border border-outline-variant font-label-caps hover:border-primary transition-all">Modification</button>
+</div>
+<!-- Data Table Container -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low text-on-surface-variant font-label-caps text-[12px] uppercase tracking-wider">
+<tr>
+<th class="p-md w-12 text-center"><input class="rounded border-outline text-primary focus:ring-primary" id="selectAll" type="checkbox"/></th>
+<th class="p-md">Timestamp</th>
+<th class="p-md">Request ID</th>
+<th class="p-md">Identifier</th>
+<th class="p-md">Type</th>
+<th class="p-md">Status</th>
+<th class="p-md text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="text-body-sm divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors cursor-pointer group" onclick="toggleExpand('row1')">
+<td class="p-md text-center" onclick="event.stopPropagation()">
+<input class="row-checkbox rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="p-md">
+<p class="font-medium text-on-surface">Oct 24, 2023</p>
+<p class="text-outline text-xs">14:22:10 WAT</p>
+</td>
+<td class="p-md font-data-mono text-xs text-on-surface-variant">REQ-8921-X9</td>
+<td class="p-md font-data-mono text-on-surface flex items-center gap-2">
+<span>5432 •••• 1092</span>
+<span class="material-symbols-outlined text-[16px] text-outline hover:text-primary cursor-pointer" onclick="event.stopPropagation()">content_copy</span>
+</td>
+<td class="p-md">
+<span class="bg-primary-fixed/30 text-on-primary-fixed-variant px-3 py-1 rounded-full text-[11px] font-bold">NIN_SEARCH</span>
+</td>
+<td class="p-md">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="font-medium text-emerald-700">Verified</span>
+</div>
+</td>
+<td class="p-md text-right">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-transform duration-300" id="icon-row1">expand_more</span>
+</td>
+</tr>
+<!-- Expanded Content 1 -->
+<tr class="bg-surface-container-low/30 hidden" id="row1-details">
+<td class="p-0" colspan="7">
+<div class="p-lg grid grid-cols-3 gap-xl border-t border-outline-variant/50">
+<div class="space-y-md">
+<h4 class="text-label-caps text-outline">Result Details</h4>
+<div class="space-y-2">
+<div class="flex justify-between text-body-sm">
+<span class="text-on-surface-variant">Full Name:</span>
+<span class="font-medium text-on-surface">ADENUGA, OLUMIDE BENJAMIN</span>
+</div>
+<div class="flex justify-between text-body-sm">
+<span class="text-on-surface-variant">Date of Birth:</span>
+<span class="font-medium text-on-surface">12 May 1985</span>
+</div>
+<div class="flex justify-between text-body-sm">
+<span class="text-on-surface-variant">Gender:</span>
+<span class="font-medium text-on-surface">Male</span>
+</div>
+</div>
+</div>
+<div class="space-y-md">
+<h4 class="text-label-caps text-outline">Meta Info</h4>
+<div class="space-y-2">
+<div class="flex justify-between text-body-sm">
+<span class="text-on-surface-variant">Agent ID:</span>
+<span class="font-medium text-on-surface">AG-LGS-442</span>
+</div>
+<div class="flex justify-between text-body-sm">
+<span class="text-on-surface-variant">Terminal IP:</span>
+<span class="font-medium text-on-surface">192.168.1.104</span>
+</div>
+<div class="flex justify-between text-body-sm">
+<span class="text-on-surface-variant">Duration:</span>
+<span class="font-medium text-on-surface">1.4s</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col justify-end gap-sm">
+<button class="w-full border border-primary text-primary py-2 rounded-lg font-label-caps hover:bg-primary-fixed-variant/10">Download Receipt</button>
+<button class="w-full bg-primary text-on-primary py-2 rounded-lg font-label-caps hover:opacity-90">View Raw JSON</button>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors cursor-pointer group" onclick="toggleExpand('row2')">
+<td class="p-md text-center" onclick="event.stopPropagation()">
+<input class="row-checkbox rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="p-md">
+<p class="font-medium text-on-surface">Oct 24, 2023</p>
+<p class="text-outline text-xs">14:15:45 WAT</p>
+</td>
+<td class="p-md font-data-mono text-xs text-on-surface-variant">REQ-8919-A2</td>
+<td class="p-md font-data-mono text-on-surface flex items-center gap-2">
+<span>7701 •••• 9928</span>
+<span class="material-symbols-outlined text-[16px] text-outline hover:text-primary cursor-pointer" onclick="event.stopPropagation()">content_copy</span>
+</td>
+<td class="p-md">
+<span class="bg-secondary-container/30 text-on-secondary-container px-3 py-1 rounded-full text-[11px] font-bold">BIO_MATCH</span>
+</td>
+<td class="p-md">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="font-medium text-error">Failed</span>
+</div>
+</td>
+<td class="p-md text-right">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-transform duration-300" id="icon-row2">expand_more</span>
+</td>
+</tr>
+<!-- Expanded Content 2 (Hidden by default) -->
+<tr class="bg-surface-container-low/30 hidden" id="row2-details">
+<td class="p-0" colspan="7">
+<div class="p-lg grid grid-cols-3 gap-xl border-t border-outline-variant/50">
+<div class="col-span-2 space-y-md">
+<div class="flex items-center gap-md text-error">
+<span class="material-symbols-outlined">warning</span>
+<h4 class="font-medium text-body-md">Verification Failed: Fingerprint Mismatch</h4>
+</div>
+<p class="text-body-sm text-on-surface-variant">The submitted biometric data (Right Index) does not match the official record stored in the national database. Confidence score: 14% (Minimum required: 85%).</p>
+</div>
+<div class="flex flex-col justify-end gap-sm">
+<button class="w-full bg-primary text-on-primary py-2 rounded-lg font-label-caps hover:opacity-90">Retry Verification</button>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors cursor-pointer group" onclick="toggleExpand('row3')">
+<td class="p-md text-center" onclick="event.stopPropagation()">
+<input class="row-checkbox rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="p-md">
+<p class="font-medium text-on-surface">Oct 24, 2023</p>
+<p class="text-outline text-xs">13:58:20 WAT</p>
+</td>
+<td class="p-md font-data-mono text-xs text-on-surface-variant">REQ-8902-Z4</td>
+<td class="p-md font-data-mono text-on-surface flex items-center gap-2">
+<span>2199 •••• 5543</span>
+<span class="material-symbols-outlined text-[16px] text-outline hover:text-primary cursor-pointer" onclick="event.stopPropagation()">content_copy</span>
+</td>
+<td class="p-md">
+<span class="bg-primary-fixed/30 text-on-primary-fixed-variant px-3 py-1 rounded-full text-[11px] font-bold">NIN_SEARCH</span>
+</td>
+<td class="p-md">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="font-medium text-emerald-700">Verified</span>
+</div>
+</td>
+<td class="p-md text-right">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-transform duration-300" id="icon-row3">expand_more</span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors cursor-pointer group" onclick="toggleExpand('row4')">
+<td class="p-md text-center" onclick="event.stopPropagation()">
+<input class="row-checkbox rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="p-md">
+<p class="font-medium text-on-surface">Oct 24, 2023</p>
+<p class="text-outline text-xs">12:10:05 WAT</p>
+</td>
+<td class="p-md font-data-mono text-xs text-on-surface-variant">REQ-8894-B1</td>
+<td class="p-md font-data-mono text-on-surface flex items-center gap-2">
+<span>9921 •••• 3341</span>
+<span class="material-symbols-outlined text-[16px] text-outline hover:text-primary cursor-pointer" onclick="event.stopPropagation()">content_copy</span>
+</td>
+<td class="p-md">
+<span class="bg-tertiary-container text-white px-3 py-1 rounded-full text-[11px] font-bold">BATCH_PROC</span>
+</td>
+<td class="p-md">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+<span class="font-medium text-amber-700">Processing</span>
+</div>
+</td>
+<td class="p-md text-right">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-transform duration-300" id="icon-row4">expand_more</span>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination Footer -->
+<div class="p-md bg-surface-container-low flex justify-between items-center border-t border-outline-variant">
+<p class="text-body-sm text-outline">Showing <span class="font-medium text-on-surface">1 - 10</span> of <span class="font-medium text-on-surface">1,244</span> records</p>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-lg border border-outline hover:bg-surface-container transition-all disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="flex gap-1">
+<button class="w-10 h-10 rounded-lg bg-primary text-on-primary font-bold shadow-md">1</button>
+<button class="w-10 h-10 rounded-lg border border-outline hover:bg-surface-container transition-all">2</button>
+<button class="w-10 h-10 rounded-lg border border-outline hover:bg-surface-container transition-all">3</button>
+<span class="w-10 h-10 flex items-center justify-center">...</span>
+<button class="w-10 h-10 rounded-lg border border-outline hover:bg-surface-container transition-all">125</button>
+</div>
+<button class="p-2 rounded-lg border border-outline hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Bulk Action Bar (Floating, Hidden by default) -->
+<div class="fixed bottom-10 left-1/2 -translate-x-1/2 glass-effect border border-primary/20 shadow-2xl rounded-full px-lg py-3 flex items-center gap-xl translate-y-32 opacity-0 bulk-bar-animate z-[60]" id="bulkBar">
+<div class="flex items-center gap-md">
+<div class="bg-primary text-on-primary w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs" id="selectedCount">0</div>
+<span class="text-body-sm font-medium text-primary">items selected</span>
+</div>
+<div class="h-6 w-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-md">
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary font-label-caps transition-colors">
+<span class="material-symbols-outlined text-md">picture_as_pdf</span>
+                    Export PDF
+                </button>
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary font-label-caps transition-colors">
+<span class="material-symbols-outlined text-md">csv</span>
+                    Export CSV
+                </button>
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary font-label-caps transition-colors">
+<span class="material-symbols-outlined text-md">archive</span>
+                    Archive
+                </button>
+</div>
+<div class="h-6 w-[1px] bg-outline-variant"></div>
+<button class="text-error hover:bg-error-container/20 p-2 rounded-full transition-all" onclick="clearSelection()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</main>
+<script>
+        function toggleExpand(id) {
+            const detailRow = document.getElementById(id + '-details');
+            const icon = document.getElementById('icon-' + id);
+            
+            if (detailRow.classList.contains('hidden')) {
+                detailRow.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                detailRow.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        const checkboxes = document.querySelectorAll('.row-checkbox');
+        const selectAll = document.getElementById('selectAll');
+        const bulkBar = document.getElementById('bulkBar');
+        const selectedCountLabel = document.getElementById('selectedCount');
+
+        function updateBulkBar() {
+            const checkedCount = document.querySelectorAll('.row-checkbox:checked').length;
+            if (checkedCount > 0) {
+                bulkBar.classList.remove('translate-y-32', 'opacity-0');
+                selectedCountLabel.innerText = checkedCount;
+            } else {
+                bulkBar.classList.add('translate-y-32', 'opacity-0');
+            }
+        }
+
+        checkboxes.forEach(cb => {
+            cb.addEventListener('change', () => {
+                updateBulkBar();
+                if (!cb.checked) selectAll.checked = false;
+            });
+        });
+
+        selectAll.addEventListener('change', () => {
+            checkboxes.forEach(cb => cb.checked = selectAll.checked);
+            updateBulkBar();
+        });
+
+        function clearSelection() {
+            checkboxes.forEach(cb => cb.checked = false);
+            selectAll.checked = false;
+            updateBulkBar();
+        }
+
+        // Ripple Effect on Buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', function(e) {
+                const ripple = document.createElement('div');
+                ripple.style.position = 'absolute';
+                ripple.style.width = '10px';
+                ripple.style.height = '10px';
+                ripple.style.background = 'rgba(255, 255, 255, 0.3)';
+                ripple.style.borderRadius = '50%';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
+                ripple.style.left = (e.clientX - this.getBoundingClientRect().left - 5) + 'px';
+                ripple.style.top = (e.clientY - this.getBoundingClientRect().top - 5) + 'px';
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes ripple {
+                to { transform: scale(30); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body></html>

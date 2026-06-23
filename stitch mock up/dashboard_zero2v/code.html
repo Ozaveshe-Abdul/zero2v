@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>zero2v Dashboard</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Outfit:wght@600;700&family=JetBrains+Mono:wght@500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#002110",
+                        "on-error": "#ffffff",
+                        "surface-container": "#f0eded",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-secondary": "#ffffff",
+                        "surface": "#fcf9f8",
+                        "on-error-container": "#93000a",
+                        "secondary-container": "#ffc641",
+                        "primary-fixed-dim": "#97d4ac",
+                        "secondary-fixed-dim": "#f6be39",
+                        "tertiary-container": "#42423f",
+                        "surface-container-highest": "#e5e2e1",
+                        "secondary": "#795900",
+                        "secondary-fixed": "#ffdfa0",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#dcd9d9",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#0d4c2e",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#e5e2e1",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#e4e2dd",
+                        "on-tertiary-fixed": "#1b1c19",
+                        "outline-variant": "#c0c9c0",
+                        "tertiary": "#2c2c29",
+                        "on-secondary-fixed": "#261a00",
+                        "on-surface-variant": "#404942",
+                        "on-tertiary-container": "#afaeaa",
+                        "on-background": "#1c1b1b",
+                        "surface-bright": "#fcf9f8",
+                        "primary-fixed": "#b3f1c7",
+                        "on-secondary-container": "#715300",
+                        "on-secondary-fixed-variant": "#5c4300",
+                        "tertiary-fixed-dim": "#c8c6c2",
+                        "surface-container-high": "#eae7e7",
+                        "primary": "#00341c",
+                        "surface-container-low": "#f6f3f2",
+                        "outline": "#707971",
+                        "inverse-primary": "#97d4ac",
+                        "on-tertiary-fixed-variant": "#474744",
+                        "on-surface": "#1c1b1b",
+                        "on-primary-fixed-variant": "#145132",
+                        "background": "#fcf9f8",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#306949",
+                        "on-primary-container": "#80bc95",
+                        "inverse-surface": "#313030"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "gutter": "16px",
+                        "base": "4px",
+                        "container-margin": "20px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "data-mono": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Outfit"],
+                        "label-caps": ["Inter"],
+                        "display-lg": ["Outfit"],
+                        "headline-lg-mobile": ["Outfit"]
+                    },
+                    "fontSize": {
+                        "data-mono": ["16px", {"lineHeight": "24px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    display: inline-block;
+    line-height: 1
+    }
+.backdrop-blur-md {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px)
+    }
+.no-scrollbar::-webkit-scrollbar {
+    display: none
+    }
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none
+    }
+.coat-of-arms-bg {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuAKKJjTtl9ULLqTLNGnAidtItZ965yfSL1LYh4vvZijxwzauuX5srLCpgx4TPB1yRC6MVTO6Gxj8MOqJCgi5pccA5_TiXjlgeHIfjc4xyZXT14eGxkgrKDy1I5cfQK_kLb20HDp2rqrN9iu04zldCHPYPqk1k1i-ncws2Hkg-WuGbL-YYsaQIVNCgBixZdJrlLfE6urjEsWk9HIuZjvgijnq1Ghp9V2CKQneWMhMmBIx0sFy8oXoiYnIzzYOm5yzYY46eUzFTL7-w);
+    background-size: 150px;
+    background-position: top 10px right 10px;
+    background-repeat: no-repeat;
+    opacity: 0.9
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-32">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-margin h-16 bg-surface shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold overflow-hidden border-2 border-primary-fixed">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a Nigerian business executive smiling warmly against a soft-focus office background. The lighting is bright and natural, emphasizing a high-trust, corporate-yet-approachable look. The color palette is composed of professional whites and subtle deep greens, matching a premium government technology aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyK2GJOQCDK6-l52haB6aLqmfPuX6dfHsBVosSsE9kmsqdjZSPPFKpDZuJLFyDdQ6nUokqfy7L6nTOVt9SGg6vsuYUMqOIQUGvbbs_MUyfUTGdprJuxVUNFVf--TT0XRpmcUwznsI1QiTb3pd4ipp9Gve4zG3WRgFAC0-XvfnSjkBsBKLgISffkf0KNKcKyuc28Xu9HqlvMXtSpnhw8CFVkZN6Qe5YUF6DV0Osr9icYImsl_kQrPIGkq7SzcLw38aQpLWGb1xm9Q"/>
+</div>
+<h1 class="font-display-lg text-headline-lg-mobile font-bold text-primary">zero2v</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors rounded-full active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<main class="mt-20 px-container-margin max-w-[1140px] mx-auto space-y-6">
+<!-- Wallet Balance Card -->
+<section class="relative overflow-hidden bg-white rounded-xl shadow-[0px_4px_12px_rgba(0,52,28,0.1)] p-md coat-of-arms-bg">
+<div class="flex justify-between items-start mb-2">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<p class="text-on-surface-variant font-body-sm">Available Balance</p>
+<div class="group relative flex items-center">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant cursor-help" data-icon="info">info</span>
+<div class="absolute bottom-full mb-2 left-0 scale-0 group-hover:scale-100 transition-all origin-bottom-left bg-primary text-white text-[10px] px-2 py-1 rounded-lg whitespace-nowrap shadow-lg">
+                                1 Naira = 1 Credit
+                            </div>
+</div>
+</div>
+<h2 class="font-display-lg text-[32px] font-bold text-[#D4A017]">₦1,250</h2>
+</div>
+<button class="bg-primary text-on-primary px-lg py-sm rounded-xl font-label-caps active:scale-95 transition-all shadow-md">
+                    Fund Wallet
+                </button>
+</div>
+<div class="mt-4 flex gap-2 overflow-x-auto no-scrollbar pb-1">
+<span class="px-3 py-1 bg-primary-fixed/30 text-primary text-[11px] rounded-full font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="security" style="font-variation-settings: 'FILL' 1;">security</span>
+                    Tier 2 Verified
+                </span>
+</div>
+</section>
+<!-- Quick Stats Row -->
+<section class="grid grid-cols-3 gap-sm">
+<div class="bg-white p-sm rounded-xl shadow-sm border border-surface-container-highest">
+<p class="text-on-surface-variant text-[10px] uppercase font-bold tracking-wider">Today</p>
+<p class="text-headline-lg-mobile font-bold text-primary">5</p>
+</div>
+<div class="bg-white p-sm rounded-xl shadow-sm border border-surface-container-highest">
+<p class="text-on-surface-variant text-[10px] uppercase font-bold tracking-wider">This Month</p>
+<p class="text-headline-lg-mobile font-bold text-primary">23</p>
+</div>
+<div class="bg-white p-sm rounded-xl shadow-sm border border-surface-container-highest">
+<p class="text-on-surface-variant text-[10px] uppercase font-bold tracking-wider">Spent</p>
+<p class="text-[14px] font-bold text-primary">₦3,450</p>
+</div>
+</section>
+<!-- Quick Actions -->
+<section class="space-y-3">
+<h3 class="text-on-surface font-headline-lg-mobile font-bold flex items-center gap-2">
+                Quick Actions
+            </h3>
+<div class="grid grid-cols-2 gap-sm">
+<!-- Action 1 -->
+<button class="flex flex-col items-center justify-center p-md bg-white rounded-xl shadow-sm border border-surface-container-highest hover:bg-surface-container transition-all active:scale-95">
+<div class="w-12 h-12 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-[28px]" data-icon="verified_user">verified_user</span>
+</div>
+<span class="font-label-caps text-on-surface">NIN Verify</span>
+</button>
+<!-- Action 2 -->
+<button class="flex flex-col items-center justify-center p-md bg-white rounded-xl shadow-sm border border-surface-container-highest hover:bg-surface-container transition-all active:scale-95">
+<div class="w-12 h-12 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-[28px]" data-icon="phone_iphone">phone_iphone</span>
+</div>
+<span class="font-label-caps text-on-surface">NIN Phone</span>
+</button>
+<!-- Action 3 -->
+<button class="flex flex-col items-center justify-center p-md bg-white rounded-xl shadow-sm border border-surface-container-highest hover:bg-surface-container transition-all active:scale-95">
+<div class="w-12 h-12 bg-tertiary-container text-on-tertiary-container rounded-full flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-[28px]" data-icon="layers">layers</span>
+</div>
+<span class="font-label-caps text-on-surface">Batch Lookup</span>
+</button>
+<!-- Action 4 -->
+<button class="flex flex-col items-center justify-center p-md bg-white rounded-xl shadow-sm border border-surface-container-highest hover:bg-surface-container transition-all active:scale-95">
+<div class="w-12 h-12 bg-surface-container-highest text-primary rounded-full flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-[28px]" data-icon="receipt_long">receipt_long</span>
+</div>
+<span class="font-label-caps text-on-surface">Orders</span>
+</button>
+</div>
+</section>
+<!-- Recent Activity -->
+<section class="space-y-3">
+<div class="flex justify-between items-center">
+<h3 class="text-on-surface font-headline-lg-mobile font-bold">Recent Activity</h3>
+<button class="text-primary font-label-caps">View All</button>
+</div>
+<div class="bg-white rounded-xl shadow-sm overflow-hidden divide-y divide-surface-container-highest">
+<!-- Row 1 -->
+<div class="flex items-center justify-between p-md hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+<div>
+<p class="font-bold text-on-surface text-body-sm">Standard NIN Lookup</p>
+<p class="text-[12px] text-on-surface-variant">2m ago</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-data-mono text-error font-bold">-₦150</p>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="flex items-center justify-between p-md hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+<div>
+<p class="font-bold text-on-surface text-body-sm">Phone Verification</p>
+<p class="text-[12px] text-on-surface-variant">15m ago</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-data-mono text-error font-bold">-₦150</p>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="flex items-center justify-between p-md hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+<div>
+<p class="font-bold text-on-surface text-body-sm">Batch NIN Sync</p>
+<p class="text-[12px] text-on-surface-variant">1h ago</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-data-mono text-error font-bold">-₦150</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface/80 dark:bg-background/80 backdrop-blur-md rounded-t-xl shadow-[0px_-4px_12px_rgba(0,52,28,0.1)]">
+<!-- Home (Active) -->
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-caps text-[10px] mt-0.5">Home</span>
+</button>
+<!-- Verify -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:text-primary transition-all active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<span class="font-label-caps text-[10px] mt-0.5">Verify</span>
+</button>
+<!-- Batch -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:text-primary transition-all active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="layers">layers</span>
+<span class="font-label-caps text-[10px] mt-0.5">Batch</span>
+</button>
+<!-- Orders -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:text-primary transition-all active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-caps text-[10px] mt-0.5">Orders</span>
+</button>
+<!-- History -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:text-primary transition-all active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-caps text-[10px] mt-0.5">History</span>
+</button>
+</nav>
+<script>
+        // Simple micro-interaction for quick cards
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('touchstart', function() {
+                this.classList.add('scale-95');
+            });
+            btn.addEventListener('touchend', function() {
+                this.classList.remove('scale-95');
+            });
+        });
+    </script>
+</body></html>

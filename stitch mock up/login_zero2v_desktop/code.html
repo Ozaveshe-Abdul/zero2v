@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>zero2v | Sovereign Trust Identity Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Outfit:wght@600;700&family=JetBrains+Mono:wght@500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#eae7e7",
+                        "error": "#ba1a1a",
+                        "secondary": "#795900",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#0d4c2e",
+                        "inverse-primary": "#97d4ac",
+                        "background": "#fcf9f8",
+                        "surface-container-highest": "#e5e2e1",
+                        "tertiary-fixed-dim": "#c8c6c2",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#00341c",
+                        "surface-dim": "#dcd9d9",
+                        "secondary-fixed-dim": "#f6be39",
+                        "on-secondary-container": "#715300",
+                        "inverse-on-surface": "#f3f0ef",
+                        "tertiary-container": "#42423f",
+                        "on-surface-variant": "#404942",
+                        "on-secondary-fixed": "#261a00",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#c0c9c0",
+                        "on-secondary-fixed-variant": "#5c4300",
+                        "on-primary-container": "#80bc95",
+                        "on-tertiary-fixed": "#1b1c19",
+                        "surface-container": "#f0eded",
+                        "on-primary-fixed": "#002110",
+                        "surface-tint": "#306949",
+                        "on-background": "#1c1b1b",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e5e2e1",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#ffc641",
+                        "tertiary": "#2c2c29",
+                        "on-primary-fixed-variant": "#145132",
+                        "primary-fixed": "#b3f1c7",
+                        "on-tertiary-container": "#afaeaa",
+                        "on-surface": "#1c1b1b",
+                        "on-tertiary-fixed-variant": "#474744",
+                        "tertiary-fixed": "#e4e2dd",
+                        "surface": "#fcf9f8",
+                        "secondary-fixed": "#ffdfa0",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-bright": "#fcf9f8",
+                        "inverse-surface": "#313030",
+                        "on-primary": "#ffffff",
+                        "outline": "#707971",
+                        "primary-fixed-dim": "#97d4ac"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "base": "4px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "gutter": "16px",
+                        "container-margin": "20px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Outfit"],
+                        "display-lg": ["Outfit"],
+                        "data-mono": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "data-mono": ["16px", {"lineHeight": "24px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #F7F5F0;
+        }
+        .tonal-elevation {
+            box-shadow: 0px 4px 12px rgba(0, 52, 28, 0.08);
+        }
+        .flag-watermark {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            opacity: 0.04;
+            pointer-events: none;
+            width: 120px;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen font-body-md text-on-surface antialiased">
+<div class="flex-grow flex items-center justify-center p-gutter">
+<main class="w-full max-w-[440px]">
+<div class="bg-surface-container-lowest rounded-xl p-xl tonal-elevation relative overflow-hidden">
+<!-- Nigerian Flag Watermark -->
+<div class="flag-watermark">
+<svg viewbox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+<rect fill="currentColor" height="60" width="33.3"></rect>
+<rect fill="transparent" height="60" width="33.4" x="33.3"></rect>
+<rect fill="currentColor" height="60" width="33.3" x="66.7"></rect>
+</svg>
+</div>
+<!-- Brand Anchor -->
+<header class="text-center mb-xl">
+<div class="flex flex-col items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-[48px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">zero2v</h1>
+<p class="text-on-surface-variant font-body-sm">Instant NIN & BVN Verification</p>
+</div>
+</header>
+<!-- Login Form -->
+<form class="space-y-lg" onsubmit="event.preventDefault();">
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant ml-xs" for="email">Email Address</label>
+<input class="w-full h-12 px-md bg-surface-bright border border-outline-variant rounded-lg text-body-md focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 outline-none" id="email" placeholder="admin@institution.gov.ng" type="email"/>
+</div>
+<div class="space-y-xs">
+<div class="flex justify-between items-center px-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant" for="password">Password</label>
+<a class="text-primary font-label-caps text-label-caps hover:underline" href="#">Forgot password?</a>
+</div>
+<div class="relative">
+<input class="w-full h-12 px-md bg-surface-bright border border-outline-variant rounded-lg text-body-md focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 outline-none" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-md top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-sm px-xs">
+<input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary" id="remember" type="checkbox"/>
+<label class="font-body-sm text-on-surface-variant" for="remember">Remember this device</label>
+</div>
+<button class="w-full h-12 bg-primary text-on-primary font-label-caps text-label-caps rounded-lg hover:bg-primary-container active:scale-[0.98] transition-all duration-200 shadow-md">
+                        LOG IN
+                    </button>
+</form>
+<!-- Ghost Button Action -->
+<div class="mt-xl pt-lg border-t border-outline-variant/30 text-center">
+<p class="font-body-sm text-on-surface-variant mb-sm">New to the platform?</p>
+<button class="w-full h-12 border border-primary text-primary font-label-caps text-label-caps rounded-lg hover:bg-primary/5 transition-all duration-200">
+                        CREATE ACCOUNT
+                    </button>
+</div>
+</div>
+<!-- Footer Trust Signals -->
+<footer class="mt-xl text-center space-y-md">
+<div class="flex justify-center items-center gap-lg opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+<img alt="NIMC" class="h-8" data-alt="A clean, professional logo of the National Identity Management Commission (NIMC) of Nigeria, featuring a sophisticated governmental seal style. The image is rendered in a minimalist forest green and white palette, fitting perfectly into a modern GovTech interface. The lighting is soft and corporate, emphasizing institutional trust and authority." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSB0hY6jBuWr1wPeRAgsGpwWSFFnQ8_8inPFZF6G8IC3SVCYeAkK90p6BgJyU56Gu_iLUzpkF9qHVA7-E4p09TBGbU87paIddN7Fb_4eZpIocuYihJybvnRYraBfJcN0D-SIcRd4w9J4Cidr5IEuybpSVHxW0Il8xVU1rp0EGWTCH9LfjPlgpt6Z3rq_kRVtTLek-mnY8IpnQLnX8vshRQ1_K_I6SHNY6A2ggie8wRtuegZVJ9BnlSUrdXP4Ewgvy_bu3qDBmV2Q"/>
+<img alt="CBN" class="h-8" data-alt="A professional logo of the Central Bank of Nigeria (CBN), represented with a modern, high-contrast aesthetic suitable for a financial technology dashboard. The design uses deep greens and golden accents to signify wealth and national security. The lighting is bright and clean, typical of a professional administrative portal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgbRzSPrBU6I7_lasn1woxOsTt_FUJdPhK5LTLHCBw7hafk-1bG68KdLEgwSEf_gY5s5Mc_POoiZ62cwmXn9S-nQQKirYsuCIzR0QSv3lhosUb_a8_HeNuNyR3l5nA5_DfoB0m3pknSRW7m8I-LbH6INVhPzAe7VEVHredyhuw3XMtYdz7DcmwrvqrYtHdrAX71nfDioYstDjrAgr5yl4rapUBizSw66wGW2wPpyfE-R750OHAua8xXzg7A3Jj8Mc07J6g5izEOw"/>
+</div>
+<p class="font-label-caps text-[10px] text-on-surface-variant uppercase tracking-widest leading-relaxed">
+                    NIMC & CBN APPROVED PARTNER • SECURED BY 256-BIT ENCRYPTION<br/>
+                    © 2024 zero2v. ALL RIGHTS RESERVED.
+                </p>
+</footer>
+</main>
+</div>
+<!-- Background Decorative Elements -->
+<div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+<div class="absolute top-[-10%] right-[-5%] w-[40vw] h-[40vw] bg-primary/5 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-10%] left-[-5%] w-[30vw] h-[30vw] bg-secondary/5 rounded-full blur-[100px]"></div>
+</div>
+<script>
+        // Micro-interaction for the "visibility" toggle
+        document.querySelector('button[type="button"]').addEventListener('click', function() {
+            const input = document.getElementById('password');
+            const icon = this.querySelector('span');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.textContent = 'visibility_off';
+            } else {
+                input.type = 'password';
+                icon.textContent = 'visibility';
+            }
+        });
+
+        // Simple button active state effect
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => btn.classList.add('scale-95'));
+            btn.addEventListener('mouseup', () => btn.classList.remove('scale-95'));
+            btn.addEventListener('mouseleave', () => btn.classList.remove('scale-95'));
+        });
+    </script>
+</body></html>

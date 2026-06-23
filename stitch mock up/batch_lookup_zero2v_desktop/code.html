@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Batch Lookup | zero2v Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #0d4c2e;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-high": "#eae7e7",
+                      "error": "#ba1a1a",
+                      "secondary": "#795900",
+                      "on-error-container": "#93000a",
+                      "primary-container": "#0d4c2e",
+                      "inverse-primary": "#97d4ac",
+                      "background": "#fcf9f8",
+                      "surface-container-highest": "#e5e2e1",
+                      "tertiary-fixed-dim": "#c8c6c2",
+                      "on-tertiary": "#ffffff",
+                      "primary": "#00341c",
+                      "surface-dim": "#dcd9d9",
+                      "secondary-fixed-dim": "#f6be39",
+                      "on-secondary-container": "#715300",
+                      "inverse-on-surface": "#f3f0ef",
+                      "tertiary-container": "#42423f",
+                      "on-surface-variant": "#404942",
+                      "on-secondary-fixed": "#261a00",
+                      "on-secondary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "outline-variant": "#c0c9c0",
+                      "on-secondary-fixed-variant": "#5c4300",
+                      "on-primary-container": "#80bc95",
+                      "on-tertiary-fixed": "#1b1c19",
+                      "surface-container": "#f0eded",
+                      "on-primary-fixed": "#002110",
+                      "surface-tint": "#306949",
+                      "on-background": "#1c1b1b",
+                      "error-container": "#ffdad6",
+                      "surface-variant": "#e5e2e1",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-container": "#ffc641",
+                      "tertiary": "#2c2c29",
+                      "on-primary-fixed-variant": "#145132",
+                      "primary-fixed": "#b3f1c7",
+                      "on-tertiary-container": "#afaeaa",
+                      "on-surface": "#1c1b1b",
+                      "on-tertiary-fixed-variant": "#474744",
+                      "tertiary-fixed": "#e4e2dd",
+                      "surface": "#fcf9f8",
+                      "secondary-fixed": "#ffdfa0",
+                      "surface-container-low": "#f6f3f2",
+                      "surface-bright": "#fcf9f8",
+                      "inverse-surface": "#313030",
+                      "on-primary": "#ffffff",
+                      "outline": "#707971",
+                      "primary-fixed-dim": "#97d4ac"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "32px",
+                      "md": "16px",
+                      "lg": "24px",
+                      "base": "4px",
+                      "xs": "4px",
+                      "sm": "8px",
+                      "gutter": "16px",
+                      "container-margin": "20px"
+              },
+              "fontFamily": {
+                      "label-caps": ["Inter"],
+                      "body-md": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "headline-lg": ["Outfit"],
+                      "display-lg": ["Outfit"],
+                      "data-mono": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "label-caps": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "data-mono": ["16px", {"lineHeight": "24px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen">
+<!-- Side Navigation Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-primary dark:bg-primary-container shadow-xl flex flex-col py-xl z-50">
+<div class="px-lg mb-xl flex items-center gap-3">
+<div class="w-10 h-10 bg-secondary-container rounded-lg flex items-center justify-center text-primary font-bold">V</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-primary leading-tight">zero2v</h1>
+<p class="text-[10px] text-on-primary-fixed-variant opacity-80 uppercase tracking-widest">Sovereign Trust Identity</p>
+</div>
+</div>
+<nav class="flex-1 px-sm space-y-1">
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3 hover:bg-primary-fixed-variant/20 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3 hover:bg-primary-fixed-variant/20 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<span class="font-label-caps text-label-caps">NIN Verification</span>
+</a>
+<a class="text-secondary-fixed font-bold border-l-4 border-secondary-fixed pl-4 py-3 flex items-center gap-3 bg-primary-fixed-variant/10" href="#">
+<span class="material-symbols-outlined" data-icon="layers">layers</span>
+<span class="font-label-caps text-label-caps">Batch Processing</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3 hover:bg-primary-fixed-variant/20 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="edit_document">edit_document</span>
+<span class="font-label-caps text-label-caps">Modification Orders</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3 hover:bg-primary-fixed-variant/20 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-caps text-label-caps">Transactions</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3 hover:bg-primary-fixed-variant/20 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-caps text-label-caps">Wallet</span>
+</a>
+</nav>
+<div class="px-lg mb-lg">
+<button class="w-full py-3 bg-secondary-container text-on-secondary-container font-bold rounded-xl flex items-center justify-center gap-2 scale-98 active:scale-95 transition-transform shadow-md">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+<span>New Verification</span>
+</button>
+</div>
+<div class="px-sm pt-xl border-t border-on-primary/10">
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3 hover:bg-primary-fixed-variant/20 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3 hover:bg-primary-fixed-variant/20 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span class="font-label-caps text-label-caps">Support</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3 hover:bg-primary-fixed-variant/20 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-caps text-label-caps">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<header class="flex justify-between items-center px-lg h-16 sticky top-0 z-40 bg-surface-container-lowest dark:bg-surface-dim border-b border-outline-variant shadow-sm">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 focus:ring-2 focus:ring-primary/20 text-body-sm font-body-sm outline-none" placeholder="Search batch ID, transaction..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<div class="flex items-center gap-md">
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-on-primary rounded-lg font-bold text-body-sm hover:bg-primary/90 transition-colors">
+<span>Fund Wallet</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors font-medium text-body-sm">Help</button>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">apps</button>
+<div class="w-10 h-10 rounded-full border-2 border-outline-variant overflow-hidden">
+<img alt="Administrator Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCB1bAlh8fKGzTP7f-2CMh8wjMeHJd0qRjy2tCv8ds5GEj6E8rOb4zJDCiu6Q28E8YFwl38RsQThV-IxKGg8U6DmrAloJXzNirUY5up_uL3PZwa-84zHTWdL_pTZy8SHKV3vU3Pvjf9b-2FZvlzeMHiFgSZawTzKLSSX4jFWuhnNkslWKVz17z8SUVljlTd3ypuzRLuQ3GmTRXUC8kbS2HhkU7a0Gb0c7IutX8d1Js_JU9IlxW0YqF3cF87fgK48gTI7OuRZx7fwQ"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Content: Batch Lookup -->
+<div class="flex-1 p-xl max-w-6xl mx-auto w-full">
+<div class="mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-2">Batch Verification</h2>
+<p class="text-on-surface-variant">Process high-volume identity checks through our institutional-grade secure endpoints.</p>
+</div>
+<div class="grid grid-cols-12 gap-xl">
+<!-- Left Column: Input Form -->
+<div class="col-span-8 flex flex-col gap-lg">
+<!-- Endpoint Selection Card -->
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border border-outline-variant">
+<label class="font-label-caps text-label-caps text-on-surface-variant block mb-3">Service Endpoint</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-low border border-outline p-4 rounded-xl font-body-md focus:ring-2 focus:ring-primary outline-none cursor-pointer">
+<option>National Identity Number (NIN) Standard - v2.1</option>
+<option>BVN Linked NIMC Verification - Premium</option>
+<option>Voter's Card Database Cross-Reference</option>
+<option>Corporate Affairs Commission (CAC) Batch</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<!-- Input Methods Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant overflow-hidden flex flex-col min-h-[400px]">
+<div class="flex border-b border-outline-variant bg-surface-container-low">
+<button class="flex-1 py-4 text-center font-bold text-primary border-b-2 border-primary bg-surface-container-lowest transition-all" id="tab-paste" onclick="toggleTab('paste')">
+<span class="flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="content_paste">content_paste</span>
+                                    Paste List
+                                </span>
+</button>
+<button class="flex-1 py-4 text-center font-medium text-on-surface-variant hover:text-primary transition-all" id="tab-upload" onclick="toggleTab('upload')">
+<span class="flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="upload_file">upload_file</span>
+                                    Upload CSV
+                                </span>
+</button>
+</div>
+<div class="p-lg flex-1 flex flex-col" id="paste-content">
+<p class="text-body-sm text-on-surface-variant mb-4">Enter one NIN per line or separate by commas. Up to 5,000 records per batch.</p>
+<div class="relative flex-1 group">
+<textarea class="w-full h-full min-h-[250px] p-4 bg-surface-container-low border-2 border-transparent focus:border-primary rounded-xl font-data-mono text-data-mono outline-none resize-none custom-scrollbar transition-all" id="nin-textarea" oninput="updateCalculation()" placeholder="12345678901
+11098765432
+99887766554..."></textarea>
+<div class="absolute right-4 bottom-4 px-3 py-1 bg-primary/10 rounded-lg text-primary font-bold text-xs">
+<span id="line-count">0</span> Identifiers
+                                </div>
+</div>
+</div>
+<div class="p-xl hidden flex-1 flex flex-col items-center justify-center text-center" id="upload-content">
+<div class="w-20 h-20 bg-primary-fixed-dim/20 rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="cloud_upload">cloud_upload</span>
+</div>
+<h4 class="font-headline-lg text-lg mb-2">Drop your CSV here</h4>
+<p class="text-on-surface-variant max-w-sm mb-6">File must contain a column named 'NIN' or 'Identification'. Only .csv or .xlsx files accepted.</p>
+<label class="px-8 py-3 bg-surface-container-high border border-outline rounded-xl font-bold cursor-pointer hover:bg-surface-container-highest transition-colors">
+                                Select File
+                                <input accept=".csv,.xlsx" class="hidden" type="file"/>
+</label>
+</div>
+</div>
+</div>
+<!-- Right Column: Summary & Actions -->
+<div class="col-span-4 space-y-lg">
+<!-- Cost Summary Card -->
+<div class="bg-primary text-on-primary rounded-xl p-lg shadow-xl relative overflow-hidden">
+<!-- Abstract Nigerian Pattern Overlay -->
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<svg height="100%" preserveaspectratio="none" viewbox="0 0 100 100" width="100%">
+<pattern height="20" id="nigeriaPattern" patternunits="userSpaceOnUse" width="20" x="0" y="0">
+<circle cx="10" cy="10" fill="white" r="1"></circle>
+<path d="M0 10h20M10 0v20" stroke="white" stroke-width="0.5"></path>
+</pattern>
+<rect fill="url(#nigeriaPattern)" height="100%" width="100%"></rect>
+</svg>
+</div>
+<div class="relative z-10">
+<h3 class="font-label-caps text-label-caps opacity-80 mb-6 uppercase tracking-wider">Verification Summary</h3>
+<div class="space-y-4 mb-8">
+<div class="flex justify-between items-center">
+<span class="opacity-80">Unit Cost</span>
+<span class="font-data-mono">₦120.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="opacity-80">Quantity</span>
+<span class="font-data-mono" id="summary-qty">0</span>
+</div>
+<div class="flex justify-between items-center border-t border-on-primary/20 pt-4">
+<span class="font-bold">Total Cost</span>
+<span class="font-display-lg text-2xl text-secondary-fixed" id="summary-total">₦0.00</span>
+</div>
+</div>
+<div class="bg-primary-container/40 rounded-xl p-4 border border-on-primary/10">
+<div class="flex justify-between items-start mb-2">
+<span class="text-xs opacity-70">Current Balance</span>
+<span class="material-symbols-outlined text-sm opacity-70">info</span>
+</div>
+<div class="font-data-mono text-xl mb-1">₦420,500.00</div>
+<div class="w-full bg-on-primary/10 h-1 rounded-full overflow-hidden">
+<div class="bg-secondary-fixed h-full" style="width: 85%;"></div>
+</div>
+<div class="text-[10px] mt-2 text-primary-fixed italic">Funds sufficient for this request.</div>
+</div>
+</div>
+</div>
+<!-- Execution Card -->
+<div class="bg-surface-container-lowest rounded-xl p-lg shadow-sm border border-outline-variant space-y-lg">
+<div class="flex items-start gap-3">
+<input class="mt-1 w-5 h-5 rounded border-outline text-primary focus:ring-primary cursor-pointer" id="consent" type="checkbox"/>
+<label class="text-body-sm text-on-surface-variant cursor-pointer" for="consent">
+                                I confirm that all listed individuals have provided legal consent for identity verification in accordance with <strong>NDPR guidelines</strong>.
+                            </label>
+</div>
+<button class="w-full py-4 bg-primary text-on-primary rounded-xl font-bold flex items-center justify-center gap-2 opacity-50 cursor-not-allowed scale-98 active:scale-95 transition-all shadow-lg hover:shadow-primary/20" disabled="" id="start-btn">
+<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+                            Start Batch Verification
+                        </button>
+<div class="flex items-center gap-2 justify-center text-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="lock">lock</span>
+                            End-to-End Encrypted Tunnel Active
+                        </div>
+</div>
+<!-- Recent Activity Snippet (Bento Style) -->
+<div class="bg-surface-container-high rounded-xl p-md">
+<h4 class="font-label-caps text-label-caps mb-3">Recent Batches</h4>
+<div class="space-y-2">
+<div class="bg-surface-container-lowest p-3 rounded-lg flex justify-between items-center">
+<div>
+<p class="text-xs font-bold text-primary">#BCH-9821</p>
+<p class="text-[10px] text-on-surface-variant">2,400 Records • Completed</p>
+</div>
+<span class="material-symbols-outlined text-on-primary-fixed-variant" data-icon="check_circle">check_circle</span>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg flex justify-between items-center opacity-60">
+<div>
+<p class="text-xs font-bold text-primary">#BCH-9815</p>
+<p class="text-[10px] text-on-surface-variant">150 Records • Completed</p>
+</div>
+<span class="material-symbols-outlined text-on-primary-fixed-variant" data-icon="check_circle">check_circle</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        function toggleTab(type) {
+            const pasteBtn = document.getElementById('tab-paste');
+            const uploadBtn = document.getElementById('tab-upload');
+            const pasteContent = document.getElementById('paste-content');
+            const uploadContent = document.getElementById('upload-content');
+
+            if (type === 'paste') {
+                pasteBtn.classList.add('text-primary', 'border-b-2', 'border-primary', 'bg-surface-container-lowest');
+                pasteBtn.classList.remove('text-on-surface-variant', 'font-medium');
+                pasteBtn.querySelector('span').classList.add('font-bold');
+
+                uploadBtn.classList.remove('text-primary', 'border-b-2', 'border-primary', 'bg-surface-container-lowest');
+                uploadBtn.classList.add('text-on-surface-variant', 'font-medium');
+                
+                pasteContent.classList.remove('hidden');
+                uploadContent.classList.add('hidden');
+            } else {
+                uploadBtn.classList.add('text-primary', 'border-b-2', 'border-primary', 'bg-surface-container-lowest');
+                uploadBtn.classList.remove('text-on-surface-variant', 'font-medium');
+
+                pasteBtn.classList.remove('text-primary', 'border-b-2', 'border-primary', 'bg-surface-container-lowest');
+                pasteBtn.classList.add('text-on-surface-variant', 'font-medium');
+
+                uploadContent.classList.remove('hidden');
+                pasteContent.classList.add('hidden');
+            }
+        }
+
+        function updateCalculation() {
+            const textarea = document.getElementById('nin-textarea');
+            const lineCountDisplay = document.getElementById('line-count');
+            const summaryQty = document.getElementById('summary-qty');
+            const summaryTotal = document.getElementById('summary-total');
+            const startBtn = document.getElementById('start-btn');
+            const consentCheckbox = document.getElementById('consent');
+
+            const text = textarea.value.trim();
+            const lines = text ? text.split(/[\n,]+/).filter(line => line.trim().length > 0) : [];
+            const count = lines.length;
+            const costPerUnit = 120;
+            const totalCost = count * costPerUnit;
+
+            lineCountDisplay.innerText = count.toLocaleString();
+            summaryQty.innerText = count.toLocaleString();
+            summaryTotal.innerText = '₦' + totalCost.toLocaleString(undefined, {minimumFractionDigits: 2});
+
+            if (count > 0 && consentCheckbox.checked) {
+                startBtn.disabled = false;
+                startBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                startBtn.classList.add('hover:bg-primary-container');
+            } else {
+                startBtn.disabled = true;
+                startBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                startBtn.classList.remove('hover:bg-primary-container');
+            }
+        }
+
+        document.getElementById('consent').addEventListener('change', updateCalculation);
+
+        // Initial call
+        updateCalculation();
+    </script>
+</body></html>

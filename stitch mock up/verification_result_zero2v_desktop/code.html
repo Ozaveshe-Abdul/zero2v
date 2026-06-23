@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>zero2v Admin - Verification Result</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&amp;family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#eae7e7",
+                    "error": "#ba1a1a",
+                    "secondary": "#795900",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#0d4c2e",
+                    "inverse-primary": "#97d4ac",
+                    "background": "#fcf9f8",
+                    "surface-container-highest": "#e5e2e1",
+                    "tertiary-fixed-dim": "#c8c6c2",
+                    "on-tertiary": "#ffffff",
+                    "primary": "#00341c",
+                    "surface-dim": "#dcd9d9",
+                    "secondary-fixed-dim": "#f6be39",
+                    "on-secondary-container": "#715300",
+                    "inverse-on-surface": "#f3f0ef",
+                    "tertiary-container": "#42423f",
+                    "on-surface-variant": "#404942",
+                    "on-secondary-fixed": "#261a00",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "outline-variant": "#c0c9c0",
+                    "on-secondary-fixed-variant": "#5c4300",
+                    "on-primary-container": "#80bc95",
+                    "on-tertiary-fixed": "#1b1c19",
+                    "surface-container": "#f0eded",
+                    "on-primary-fixed": "#002110",
+                    "surface-tint": "#306949",
+                    "on-background": "#1c1b1b",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e5e2e1",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#ffc641",
+                    "tertiary": "#2c2c29",
+                    "on-primary-fixed-variant": "#145132",
+                    "primary-fixed": "#b3f1c7",
+                    "on-tertiary-container": "#afaeaa",
+                    "on-surface": "#1c1b1b",
+                    "on-tertiary-fixed-variant": "#474744",
+                    "tertiary-fixed": "#e4e2dd",
+                    "surface": "#fcf9f8",
+                    "secondary-fixed": "#ffdfa0",
+                    "surface-container-low": "#f6f3f2",
+                    "surface-bright": "#fcf9f8",
+                    "inverse-surface": "#313030",
+                    "on-primary": "#ffffff",
+                    "outline": "#707971",
+                    "primary-fixed-dim": "#97d4ac"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "gutter": "16px",
+                    "container-margin": "20px"
+            },
+            "fontFamily": {
+                    "label-caps": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Outfit"],
+                    "display-lg": ["Outfit"],
+                    "data-mono": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "label-caps": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "data-mono": ["16px", {"lineHeight": "24px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .coat-of-arms-watermark {
+            opacity: 0.04;
+            pointer-events: none;
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            width: 120px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- SideNavBar Shell -->
+<aside class="bg-primary dark:bg-primary-container shadow-xl h-screen w-64 fixed left-0 top-0 flex flex-col py-xl z-50">
+<div class="px-lg mb-xl">
+<h1 class="text-headline-lg font-headline-lg font-bold text-on-primary">zero2v</h1>
+<p class="text-label-caps font-label-caps text-on-primary-container/80 tracking-widest">SOVEREIGN TRUST IDENTITY</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3 hover:bg-primary-fixed-variant/20 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="text-secondary-fixed font-bold border-l-4 border-secondary-fixed pl-4 py-3 flex items-center gap-3 bg-primary-fixed-variant/10" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="font-label-caps text-label-caps">NIN Verification</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3 hover:bg-primary-fixed-variant/20 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">layers</span>
+<span class="font-label-caps text-label-caps">Batch Processing</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3 hover:bg-primary-fixed-variant/20 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">edit_document</span>
+<span class="font-label-caps text-label-caps">Modification Orders</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3 hover:bg-primary-fixed-variant/20 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-caps text-label-caps">Transactions</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3 hover:bg-primary-fixed-variant/20 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-caps text-label-caps">Wallet</span>
+</a>
+</nav>
+<div class="mt-auto px-lg space-y-4">
+<button class="w-full bg-secondary-container text-on-secondary-container font-bold py-3 rounded-lg flex items-center justify-center gap-2 scale-98 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">add</span>
+<span class="font-label-caps text-label-caps">New Verification</span>
+</button>
+<div class="border-t border-on-primary/10 pt-4 space-y-1">
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 py-2 flex items-center gap-3 font-label-caps text-label-caps transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 py-2 flex items-center gap-3 font-label-caps text-label-caps transition-all" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span>Support</span>
+</a>
+<a class="text-error-container/80 hover:text-error-container py-2 flex items-center gap-3 font-label-caps text-label-caps transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen flex flex-col">
+<!-- TopNavBar Shell -->
+<header class="bg-surface-container-lowest dark:bg-surface-dim border-b border-outline-variant h-16 sticky top-0 z-40 flex justify-between items-center px-lg shadow-sm">
+<div class="flex items-center flex-1">
+<div class="relative w-96 group focus-within:ring-2 focus-within:ring-primary/20 rounded-lg">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container border-none rounded-lg pl-10 py-2 text-body-sm focus:ring-0" placeholder="Search verified records..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 border-r border-outline-variant pr-6">
+<button class="bg-primary text-on-primary font-bold px-4 py-2 rounded-lg text-body-sm hover:bg-primary-container transition-colors">Fund Wallet</button>
+<button class="text-on-surface-variant font-medium hover:text-primary transition-colors text-body-sm">Help</button>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">apps</span>
+</button>
+<div class="flex items-center gap-3 pl-4">
+<div class="text-right">
+<p class="text-body-sm font-bold leading-tight">Admin User</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">Verification Officer</p>
+</div>
+<img alt="Administrator Profile" class="w-10 h-10 rounded-full border-2 border-primary/20 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBl4OBpVeJisM4NOhBBmnQ0e7j9Al-8b5Q8dLMxWMzO8cs4MzkNZCr5CWqrGyGZg6smvnh8IybYMmWypaeyE1fRTdU_yNcL2rx32pqauLqxkKxoCHQoCO9haExXZ95nlLGU2hbGGIAh0gZvBWsy26zR_ALEv3p6IQ1JqHGEo7gtWx69NoK9qG0Q9DkwDuYmuCFF1T9TBezzgE5zEyWO67pcGstg_GFrboshUnfEh1ReWsQa96Gsf41QNvpcvo2KIwClhzZnJJkw2g"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Verification Detail Section -->
+<div class="flex-1 p-xl max-w-6xl mx-auto w-full">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 mb-lg text-on-surface-variant text-body-sm">
+<span>Dashboard</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span>Verification Results</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-primary font-bold">Report #VN-49204210</span>
+</div>
+<!-- Profile Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_12px_rgba(0,52,28,0.08)] relative overflow-hidden border border-outline-variant/30">
+<!-- Nigerian Coat of Arms Background Element -->
+<svg class="coat-of-arms-watermark text-primary" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-width="0.5"></circle>
+<path d="M50 20 L55 35 L70 35 L58 45 L62 60 L50 50 L38 60 L42 45 L30 35 L45 35 Z" fill="currentColor" opacity="0.5"></path>
+</svg>
+<!-- Header Info -->
+<div class="p-xl border-b border-outline-variant/30 flex flex-col md:flex-row items-start md:items-center gap-xl bg-gradient-to-r from-primary-container/5 to-transparent">
+<div class="relative">
+<div class="w-32 h-32 rounded-xl bg-primary flex items-center justify-center overflow-hidden border-4 border-white shadow-lg">
+<img alt="Profile Image" class="w-full h-full object-cover" data-alt="A professional studio portrait of a confident Nigerian man in his late 30s wearing a crisp white dress shirt. The background is a solid deep forest green, creating a high-contrast and authoritative aesthetic. The lighting is soft and even, highlighting facial features with clarity suitable for an official identity document. The overall mood is institutional, secure, and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSYz2CzKdCG-kRj4nl8cUufz7q-nchFIjKCdtPbvImmT7ZlKR0O5DyvD85tX6E3ILbmdAZup_6ZtxmFZPB3EBb3uB5sYpomq2EWKwN7PWQ7IzJWH2Jm5Tf1m_mCtWhgmc3r054mXFikecxjmetLyyhHNQbznpRtQRuV0Er5MHFrhPR70Io0qBFjDzrw6VQfSwPiuQOWzhTybD0sLxN0SDVri0yyy6K0dDxOB6U-TSqXmeSMp8F864tqGqNmfDfU5k6JDX0U3yAoQ"/>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-secondary-container text-on-secondary-container p-1 rounded-full shadow-md">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex flex-col md:flex-row md:items-center gap-md mb-2">
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">ADEKUNLE OLUMIDE CHUKWUMA</h2>
+<div class="bg-surface-container-high px-3 py-1 rounded-full flex items-center gap-2 border border-outline-variant/50">
+<span class="font-data-mono text-data-mono text-primary select-all">NIN: 1029 3847 5612</span>
+<button class="hover:text-primary transition-colors text-on-surface-variant flex items-center" title="Copy to clipboard">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+</div>
+<div class="flex flex-wrap gap-4">
+<div class="flex items-center gap-2 text-on-surface-variant text-body-sm">
+<span class="material-symbols-outlined text-[18px]">fingerprint</span>
+<span>Biometrics Matched: 98.4%</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-body-sm">
+<span class="material-symbols-outlined text-[18px]">event_available</span>
+<span>Verified: Oct 24, 2023 · 14:22 WAT</span>
+</div>
+<div class="bg-primary/10 text-primary px-3 py-0.5 rounded-full text-[12px] font-bold uppercase tracking-wider flex items-center">
+                                STATUS: ACTIVE
+                            </div>
+</div>
+</div>
+</div>
+<!-- Grid Data -->
+<div class="p-xl grid grid-cols-1 md:grid-cols-3 gap-xl">
+<div class="space-y-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest opacity-60">Date of Birth</label>
+<p class="font-body-md text-body-md font-bold">14th September 1985</p>
+</div>
+<div class="space-y-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest opacity-60">Gender</label>
+<p class="font-body-md text-body-md font-bold">Male</p>
+</div>
+<div class="space-y-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest opacity-60">Phone Number</label>
+<p class="font-body-md text-body-md font-bold">+234 803 000 1234</p>
+</div>
+<div class="space-y-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest opacity-60">State of Origin</label>
+<p class="font-body-md text-body-md font-bold">Lagos State</p>
+</div>
+<div class="space-y-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest opacity-60">LGA</label>
+<p class="font-body-md text-body-md font-bold">Ikeja</p>
+</div>
+<div class="space-y-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest opacity-60">Town/City</label>
+<p class="font-body-md text-body-md font-bold">Oregun</p>
+</div>
+</div>
+<!-- Full Address Block -->
+<div class="px-xl pb-xl">
+<div class="bg-surface-container-low p-lg rounded-xl border border-outline-variant/30">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest opacity-60 block mb-sm">Residential Address</label>
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-primary mt-1">location_on</span>
+<p class="font-body-md text-body-md leading-relaxed max-w-2xl">
+                                42b Admiralty Way, Lekki Phase 1, Near British International School, Lagos State, Nigeria. 
+                                <span class="block mt-2 text-on-surface-variant text-body-sm italic">Last updated: January 2023 via NIMC sync.</span>
+</p>
+</div>
+</div>
+</div>
+<!-- Meta Footer -->
+<div class="bg-surface-container p-md px-xl flex justify-between items-center text-[12px] text-on-surface-variant/70 border-t border-outline-variant/30">
+<div class="flex gap-lg">
+<span>Report ID: <strong>VN-49204210-FG</strong></span>
+<span>Tracking ID: <strong>NIMC-2023-XYZ-001</strong></span>
+</div>
+<span>Source: National Identity Management Commission (NIMC) Database</span>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="mt-xl flex flex-col sm:flex-row justify-between items-center gap-lg">
+<div class="flex gap-4">
+<button class="bg-primary text-on-primary font-bold px-8 py-4 rounded-xl flex items-center gap-3 shadow-lg hover:shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined">picture_as_pdf</span>
+<span class="font-label-caps text-label-caps">Download PDF Report</span>
+</button>
+<button class="border-2 border-primary text-primary font-bold px-8 py-4 rounded-xl flex items-center gap-3 hover:bg-primary/5 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined">print</span>
+<span class="font-label-caps text-label-caps">Print Record</span>
+</button>
+</div>
+<button class="flex items-center gap-2 text-primary font-bold hover:underline transition-all">
+<span class="material-symbols-outlined">arrow_forward</span>
+<span class="font-label-caps text-label-caps">Verify Another Identity</span>
+</button>
+</div>
+<!-- Footer Details -->
+<div class="mt-xl p-lg border-t border-outline-variant/30 flex justify-between items-center opacity-60">
+<p class="text-body-sm">Audit Logged at 14:22:45 UTC+1. Your session is protected by 256-bit AES encryption.</p>
+<div class="flex gap-md">
+<img alt="Security Shield" class="h-6 grayscale opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDSFIVEQ_BAH7ssu6gmP0TRyGpIqEUM_hpTF-NyTfXDO1kFgq1cwjOmaRETYF3zU1igCeCOaC3TFzfa7N6Kmb6840C5il0J57OuF6L2BeEqjEQiR8NDHb6Z438T_bTrbfvWYKhf9H3R1mMqv5Yqu2T8IssyynjjeLfFhp4jWlcyDkMT_BjUTtUHDAb4osd_7MtOhjc0AhXVMA5PGH74-cIVefQxtBiHz8LNYPE3MrBH3AykIpKFaCqNw1Z71mzfdT-vXGChc0_hw"/>
+<img alt="NG Flag" class="h-6 grayscale opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEPTQ9W3-5VSuDf2JXkotiMTran54p7yTmJyqAYvf_kYQCR7zVF1040YRgpAMzHS2woiUUm2ySPKrOgNplHJGFvodV9XwYnbV9AVmsP5XSWBJxfvzHVeVK01rsE4OUJAM1thzFN1eNkLeHbsXxY-OTqNUfkddpPUpzZn2gCa5W_-vZ6geC-fs_bYTgj4pEI2lYHZ-aSGIdYpJ5d3lNT75ibU2VKX1ZEdaW7pSNiaEHgEQyu4Vkp5u0K9fSEzxoKn2bNfnKdZYrOg"/>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Micro-interaction for Copy to Clipboard
+        const copyBtn = document.querySelector('button[title="Copy to clipboard"]');
+        if (copyBtn) {
+            copyBtn.addEventListener('click', () => {
+                const ninText = document.querySelector('.select-all').textContent.replace('NIN: ', '');
+                navigator.clipboard.writeText(ninText).then(() => {
+                    const icon = copyBtn.querySelector('.material-symbols-outlined');
+                    const originalIcon = icon.textContent;
+                    icon.textContent = 'check';
+                    copyBtn.classList.add('text-primary');
+                    setTimeout(() => {
+                        icon.textContent = originalIcon;
+                        copyBtn.classList.remove('text-primary');
+                    }, 2000);
+                });
+            });
+        }
+    </script>
+</body></html>

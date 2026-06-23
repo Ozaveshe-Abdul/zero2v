@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Verification Result - zero2v</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&amp;family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed": "#002110",
+                    "on-error": "#ffffff",
+                    "surface-container": "#f0eded",
+                    "inverse-on-surface": "#f3f0ef",
+                    "on-secondary": "#ffffff",
+                    "surface": "#fcf9f8",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#ffc641",
+                    "primary-fixed-dim": "#97d4ac",
+                    "secondary-fixed-dim": "#f6be39",
+                    "tertiary-container": "#42423f",
+                    "surface-container-highest": "#e5e2e1",
+                    "secondary": "#795900",
+                    "secondary-fixed": "#ffdfa0",
+                    "error": "#ba1a1a",
+                    "surface-dim": "#dcd9d9",
+                    "on-primary": "#ffffff",
+                    "primary-container": "#0d4c2e",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-variant": "#e5e2e1",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#e4e2dd",
+                    "on-tertiary-fixed": "#1b1c19",
+                    "outline-variant": "#c0c9c0",
+                    "tertiary": "#2c2c29",
+                    "on-secondary-fixed": "#261a00",
+                    "on-surface-variant": "#404942",
+                    "on-tertiary-container": "#afaeaa",
+                    "on-background": "#1c1b1b",
+                    "surface-bright": "#fcf9f8",
+                    "primary-fixed": "#b3f1c7",
+                    "on-secondary-container": "#715300",
+                    "on-secondary-fixed-variant": "#5c4300",
+                    "tertiary-fixed-dim": "#c8c6c2",
+                    "surface-container-high": "#eae7e7",
+                    "primary": "#00341c",
+                    "surface-container-low": "#f6f3f2",
+                    "outline": "#707971",
+                    "inverse-primary": "#97d4ac",
+                    "on-tertiary-fixed-variant": "#474744",
+                    "on-surface": "#1c1b1b",
+                    "on-primary-fixed-variant": "#145132",
+                    "background": "#fcf9f8",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#306949",
+                    "on-primary-container": "#80bc95",
+                    "inverse-surface": "#313030"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "gutter": "16px",
+                    "base": "4px",
+                    "container-margin": "20px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "data-mono": ["JetBrains+Mono", "monospace"],
+                    "body-md": ["Inter", "sans-serif"],
+                    "body-sm": ["Inter", "sans-serif"],
+                    "headline-lg": ["Outfit", "sans-serif"],
+                    "label-caps": ["Inter", "sans-serif"],
+                    "display-lg": ["Outfit", "sans-serif"],
+                    "headline-lg-mobile": ["Outfit", "sans-serif"]
+            },
+            "fontSize": {
+                    "data-mono": ["16px", {"lineHeight": "24px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle;
+        }
+        .identity-watermark {
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0));
+            opacity: 0.05;
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen font-body-md flex flex-col items-center">
+<!-- Top Navigation (Shell Implementation) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-margin h-16 bg-surface shadow-sm">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container active:scale-95 transition-all">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<span class="font-display-lg text-headline-lg-mobile font-bold text-primary">zero2v</span>
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-fixed" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+</header>
+<main class="w-full max-w-md px-container-margin pt-24 pb-32 flex flex-col gap-lg">
+<!-- Header Success Badge -->
+<div class="flex items-center gap-sm bg-primary-container/10 p-md rounded-xl">
+<div class="bg-primary text-white p-1 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div>
+<p class="text-primary font-bold text-body-sm leading-none">Verification Successful</p>
+<p class="text-on-surface-variant text-[12px]">Confirmed by National Database</p>
+</div>
+</div>
+<!-- Main Identity Card -->
+<div class="relative bg-surface rounded-xl shadow-[0px_4px_12px_rgba(0,52,28,0.08)] overflow-hidden border border-outline-variant/30">
+<!-- Institutional Watermark -->
+<div class="absolute top-4 right-4 w-24 h-24 identity-watermark pointer-events-none">
+<svg class="text-primary" fill="currentColor" viewbox="0 0 100 100">
+<path d="M50 10 L80 30 L80 70 L50 90 L20 70 L20 30 Z"></path>
+</svg>
+</div>
+<div class="p-lg flex flex-col items-center text-center">
+<!-- Avatar Section -->
+<div class="relative mb-md">
+<div class="w-24 h-24 rounded-full bg-primary-fixed flex items-center justify-center border-4 border-surface shadow-md">
+<span class="material-symbols-outlined text-on-primary-fixed text-5xl" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</div>
+<div class="absolute bottom-1 right-1 w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center border-2 border-surface">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+</div>
+<!-- Identity Summary -->
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-xs">Oluwaseun Adewale</h1>
+<div class="flex items-center gap-xs bg-surface-container-low px-sm py-1 rounded-full border border-outline-variant mb-md">
+<span class="text-[10px] uppercase font-bold text-on-surface-variant">NIN</span>
+<code class="font-data-mono text-primary font-bold tracking-wider">12345678901</code>
+<button class="hover:text-primary transition-colors flex items-center" onclick="navigator.clipboard.writeText('12345678901')">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="font-label-caps text-on-surface-variant text-[10px]">REPORT ID</span>
+<span class="font-data-mono text-on-surface-variant text-body-sm">VNG-2023-8842-XQ</span>
+</div>
+</div>
+<!-- Divider -->
+<div class="px-lg">
+<hr class="border-outline-variant/30"/>
+</div>
+<!-- Info Grid Section -->
+<div class="p-lg">
+<div class="grid grid-cols-2 gap-y-lg gap-x-md">
+<!-- Row 1 -->
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-on-surface-variant uppercase text-[10px] tracking-widest">Date of Birth</span>
+<p class="font-body-md font-bold text-on-surface">14 MAY 1988</p>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-on-surface-variant uppercase text-[10px] tracking-widest">Gender</span>
+<p class="font-body-md font-bold text-on-surface">Male</p>
+</div>
+<!-- Row 2 -->
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-on-surface-variant uppercase text-[10px] tracking-widest">Phone Number</span>
+<p class="font-body-md font-bold text-on-surface">0803 *** 4567</p>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-on-surface-variant uppercase text-[10px] tracking-widest">State of Origin</span>
+<p class="font-body-md font-bold text-on-surface">Oyo State</p>
+</div>
+<!-- Row 3 -->
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-on-surface-variant uppercase text-[10px] tracking-widest">LGA</span>
+<p class="font-body-md font-bold text-on-surface">Ibadan North</p>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-on-surface-variant uppercase text-[10px] tracking-widest">Town</span>
+<p class="font-body-md font-bold text-on-surface">Agodi</p>
+</div>
+</div>
+<!-- Address Section -->
+<div class="mt-xl pt-lg border-t border-outline-variant/20">
+<span class="font-label-caps text-on-surface-variant uppercase text-[10px] tracking-widest block mb-1">Residential Address</span>
+<p class="font-body-md text-on-surface leading-relaxed">15B, Alafin Avenue, Oluyole Estate Extension, Ibadan, Oyo State, Nigeria.</p>
+</div>
+<!-- Birth Info Section -->
+<div class="mt-lg p-md bg-surface-container-low rounded-lg border border-outline-variant/30">
+<div class="flex items-center gap-xs mb-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">location_on</span>
+<h3 class="font-label-caps text-primary uppercase text-[10px]">Birth Information</h3>
+</div>
+<div class="grid grid-cols-3 gap-md">
+<div>
+<span class="text-[9px] text-on-surface-variant block uppercase">Country</span>
+<span class="text-body-sm font-bold">Nigeria</span>
+</div>
+<div>
+<span class="text-[9px] text-on-surface-variant block uppercase">State</span>
+<span class="text-body-sm font-bold">Lagos</span>
+</div>
+<div>
+<span class="text-[9px] text-on-surface-variant block uppercase">LGA</span>
+<span class="text-body-sm font-bold">Ikeja</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="flex flex-col gap-md">
+<button class="w-full h-12 bg-primary text-white rounded-xl flex items-center justify-center gap-sm hover:opacity-90 active:scale-[0.98] transition-all shadow-md">
+<span class="material-symbols-outlined">download</span>
+<span class="font-bold">Download PDF Report</span>
+</button>
+<button class="w-full h-12 bg-surface text-primary border-2 border-primary rounded-xl flex items-center justify-center gap-sm hover:bg-primary/5 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined">refresh</span>
+<span class="font-bold">Verify Another Identity</span>
+</button>
+</div>
+<!-- Meta Info -->
+<div class="text-center mt-md">
+<p class="text-on-surface-variant text-[12px] opacity-70">Timestamp: 24 Oct 2023, 14:22:10 WAT</p>
+</div>
+</main>
+<!-- Bottom Navigation (Shell Implementation) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface/80 glass-nav shadow-[0px_-4px_12px_rgba(0,52,28,0.1)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-label-caps">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label-caps text-label-caps">Verify</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">layers</span>
+<span class="font-label-caps text-label-caps">Batch</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-caps text-label-caps">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-caps text-label-caps">History</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for feedback
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const icon = this.querySelector('.material-symbols-outlined');
+                if (icon && icon.innerText === 'content_copy') {
+                    const original = icon.innerText;
+                    icon.innerText = 'check_circle';
+                    icon.classList.add('text-primary');
+                    setTimeout(() => {
+                        icon.innerText = original;
+                        icon.classList.remove('text-primary');
+                    }, 2000);
+                }
+            });
+        });
+    </script>
+</body></html>

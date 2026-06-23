@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Batch Processing | zero2v Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Outfit:wght@600;700&family=JetBrains+Mono:wght@500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#eae7e7",
+                        "error": "#ba1a1a",
+                        "secondary": "#795900",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#0d4c2e",
+                        "inverse-primary": "#97d4ac",
+                        "background": "#fcf9f8",
+                        "surface-container-highest": "#e5e2e1",
+                        "tertiary-fixed-dim": "#c8c6c2",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#00341c",
+                        "surface-dim": "#dcd9d9",
+                        "secondary-fixed-dim": "#f6be39",
+                        "on-secondary-container": "#715300",
+                        "inverse-on-surface": "#f3f0ef",
+                        "tertiary-container": "#42423f",
+                        "on-surface-variant": "#404942",
+                        "on-secondary-fixed": "#261a00",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#c0c9c0",
+                        "on-secondary-fixed-variant": "#5c4300",
+                        "on-primary-container": "#80bc95",
+                        "on-tertiary-fixed": "#1b1c19",
+                        "surface-container": "#f0eded",
+                        "on-primary-fixed": "#002110",
+                        "surface-tint": "#306949",
+                        "on-background": "#1c1b1b",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e5e2e1",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#ffc641",
+                        "tertiary": "#2c2c29",
+                        "on-primary-fixed-variant": "#145132",
+                        "primary-fixed": "#b3f1c7",
+                        "on-tertiary-container": "#afaeaa",
+                        "on-surface": "#1c1b1b",
+                        "on-tertiary-fixed-variant": "#474744",
+                        "tertiary-fixed": "#e4e2dd",
+                        "surface": "#fcf9f8",
+                        "secondary-fixed": "#ffdfa0",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-bright": "#fcf9f8",
+                        "inverse-surface": "#313030",
+                        "on-primary": "#ffffff",
+                        "outline": "#707971",
+                        "primary-fixed-dim": "#97d4ac"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "base": "4px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "gutter": "16px",
+                        "container-margin": "20px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Outfit"],
+                        "display-lg": ["Outfit"],
+                        "data-mono": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "data-mono": ["16px", {"lineHeight": "24px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .pulse-animation {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+        .progress-bar-shine {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background-size: 200% 100%;
+            animation: shine 2s infinite;
+        }
+        @keyframes shine {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- Side Navigation Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-primary shadow-xl flex flex-col py-xl z-50">
+<div class="px-lg mb-xl">
+<h1 class="text-headline-lg font-headline-lg font-bold text-on-primary">zero2v</h1>
+<p class="text-label-caps font-label-caps text-on-primary-container opacity-70">Sovereign Trust Identity</p>
+</div>
+<nav class="flex-grow flex flex-col">
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3 hover:bg-primary-fixed-variant/20 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3 hover:bg-primary-fixed-variant/20 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<span class="font-label-caps text-label-caps">NIN Verification</span>
+</a>
+<a class="text-secondary-fixed font-bold border-l-4 border-secondary-fixed pl-4 py-3 flex items-center gap-3 bg-primary-fixed-variant/20 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="layers">layers</span>
+<span class="font-label-caps text-label-caps">Batch Processing</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3 hover:bg-primary-fixed-variant/20 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="edit_document">edit_document</span>
+<span class="font-label-caps text-label-caps">Modification Orders</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3 hover:bg-primary-fixed-variant/20 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-caps text-label-caps">Transactions</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3 hover:bg-primary-fixed-variant/20 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-caps text-label-caps">Wallet</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-on-primary/10 pt-lg">
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3 hover:bg-primary-fixed-variant/20" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3 hover:bg-primary-fixed-variant/20" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span class="font-label-caps text-label-caps">Support</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3 hover:bg-primary-fixed-variant/20" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-caps text-label-caps">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen">
+<!-- Top Navigation Shell -->
+<header class="flex justify-between items-center px-lg h-16 sticky top-0 z-40 bg-surface-container-lowest border-b border-outline-variant shadow-sm">
+<div class="flex items-center gap-md">
+<div class="relative w-96">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant material-symbols-outlined">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-lg pl-10 pr-md py-2 text-body-sm focus:ring-2 focus:ring-primary/20" placeholder="Search batch ID or citizen name..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<div class="flex items-center gap-md">
+<button class="bg-primary text-on-primary px-md py-2 rounded-lg font-label-caps text-label-caps flex items-center gap-2 hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        Fund Wallet
+                    </button>
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1 font-label-caps text-label-caps">
+<span class="material-symbols-outlined">help</span>
+                        Help
+                    </button>
+</div>
+<div class="flex items-center gap-sm border-l border-outline-variant pl-lg">
+<button class="text-on-surface-variant hover:text-primary p-2 rounded-full hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary p-2 rounded-full hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined">apps</span>
+</button>
+<img alt="Administrator Profile" class="w-8 h-8 rounded-full border border-outline ml-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-7ZLArb15nX62ur0Evnc7E-AjyrUKGIeFVEKE4f3WKvBoSXSmV0JGtiEr67xFKmOffLSvepWGlzJRY9wgU9MuSB23h3450AJnRmgfz_vAMCEBqOiTdKM9f8ol5dss1Nx6IrAK2VFs0OOXNwvopX5lDPb_EMZK8x4_EMcOTbIVKO5YuICEPw_UPTING6RqiNXiWA29IF2GkTWXBTLWIk99TKSYx7rUljWBoCxIrTKGI8ZPZ53NdIcISLpTHDvandrc0aGEuzXrig"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-xl max-w-[1200px] mx-auto">
+<!-- Progress Header Section -->
+<section class="mb-xl bg-surface-container-lowest p-xl rounded-xl shadow-sm border border-outline-variant relative overflow-hidden">
+<!-- Background Running Indicator -->
+<div class="absolute top-0 right-0 p-md flex items-center gap-2">
+<span class="w-2 h-2 bg-secondary rounded-full pulse-animation"></span>
+<span class="text-label-caps font-label-caps text-on-surface-variant">Background Sync Active</span>
+</div>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-lg mb-lg">
+<div>
+<div class="flex items-center gap-sm mb-base">
+<span class="font-label-caps text-label-caps text-secondary-fixed-dim bg-primary-container px-2 py-0.5 rounded">BATCH #BATCH-2023-9942</span>
+<span class="text-label-caps font-label-caps text-on-surface-variant">• Processing since 09:45 AM</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-primary">Biometric Reconciliation Progress</h2>
+<p class="text-body-md text-on-surface-variant mt-sm">Validating 12,500 identity records against federal databases. Expected completion in 14 minutes.</p>
+</div>
+<div class="text-right">
+<span class="font-display-lg text-display-lg text-primary">68<span class="text-headline-lg">%</span></span>
+<p class="font-label-caps text-label-caps text-on-surface-variant">COMPLETION STATUS</p>
+</div>
+</div>
+<!-- Custom Progress Bar -->
+<div class="w-full h-4 bg-primary-container rounded-full overflow-hidden relative">
+<div class="h-full bg-secondary-container relative transition-all duration-1000 ease-in-out" style="width: 68%;">
+<div class="absolute inset-0 progress-bar-shine"></div>
+</div>
+</div>
+</section>
+<!-- Stats Summary Cards (Bento Layout) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-lg mb-xl">
+<!-- Found/Success -->
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border-l-4 border-primary flex items-start gap-md">
+<div class="bg-primary/10 p-sm rounded-lg text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">VALIDATED RECORDS</p>
+<h3 class="font-headline-lg text-headline-lg text-primary">8,500</h3>
+<p class="text-body-sm text-on-primary-fixed-variant font-bold">+1,200 this hour</p>
+</div>
+</div>
+<!-- Pending -->
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border-l-4 border-secondary flex items-start gap-md">
+<div class="bg-secondary/10 p-sm rounded-lg text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">pending</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">PENDING QUEUE</p>
+<h3 class="font-headline-lg text-headline-lg text-secondary">3,950</h3>
+<p class="text-body-sm text-on-secondary-fixed-variant font-bold">Processing at 42 req/s</p>
+</div>
+</div>
+<!-- Failed/Errors -->
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border-l-4 border-error flex items-start gap-md">
+<div class="bg-error/10 p-sm rounded-lg text-error">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">error</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">FAILURE LOGS</p>
+<h3 class="font-headline-lg text-headline-lg text-error">50</h3>
+<p class="text-body-sm text-on-error-container font-bold">Manual review needed</p>
+</div>
+</div>
+</section>
+<!-- Detailed Table List -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant overflow-hidden">
+<div class="px-lg py-md border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<h3 class="font-headline-lg text-body-md font-bold text-primary">Live Transaction Stream</h3>
+<div class="flex items-center gap-md">
+<button class="flex items-center gap-2 px-md py-2 border border-outline text-on-surface-variant rounded-lg font-label-caps text-label-caps hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                            Filter Results
+                        </button>
+<button class="flex items-center gap-2 px-md py-2 bg-primary text-on-primary rounded-lg font-label-caps text-label-caps hover:bg-primary-container transition-all">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                            Download Partial CSV
+                        </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-lg py-md font-label-caps text-label-caps text-on-surface-variant">REFERENCE ID</th>
+<th class="px-lg py-md font-label-caps text-label-caps text-on-surface-variant">CITIZEN NAME</th>
+<th class="px-lg py-md font-label-caps text-label-caps text-on-surface-variant">NIN NUMBER</th>
+<th class="px-lg py-md font-label-caps text-label-caps text-on-surface-variant">STATUS</th>
+<th class="px-lg py-md font-label-caps text-label-caps text-on-surface-variant">LATENCY</th>
+<th class="px-lg py-md font-label-caps text-label-caps text-on-surface-variant">ACTION</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-lg py-md font-data-mono text-data-mono text-primary">#VN-9823-XA</td>
+<td class="px-lg py-md font-body-sm text-on-surface font-medium">Olawale, Ibrahim Chuka</td>
+<td class="px-lg py-md font-data-mono text-data-mono flex items-center gap-2">
+                                    5422 •••• 1092
+                                    <span class="material-symbols-outlined text-sm text-on-surface-variant cursor-pointer hover:text-primary">content_copy</span>
+</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 bg-primary/10 text-primary rounded-full font-label-caps text-[10px]">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                                        VERIFIED
+                                    </span>
+</td>
+<td class="px-lg py-md font-body-sm text-on-surface-variant">142ms</td>
+<td class="px-lg py-md">
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined">visibility</span></button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-lg py-md font-data-mono text-data-mono text-primary">#VN-9823-XB</td>
+<td class="px-lg py-md font-body-sm text-on-surface font-medium">Nwachukwu, Amaka Grace</td>
+<td class="px-lg py-md font-data-mono text-data-mono flex items-center gap-2">
+                                    8810 •••• 5521
+                                    <span class="material-symbols-outlined text-sm text-on-surface-variant cursor-pointer hover:text-primary">content_copy</span>
+</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 bg-secondary/10 text-secondary rounded-full font-label-caps text-[10px]">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full animate-pulse"></span>
+                                        PROCESSING
+                                    </span>
+</td>
+<td class="px-lg py-md font-body-sm text-on-surface-variant">--</td>
+<td class="px-lg py-md">
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined">visibility</span></button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-lg py-md font-data-mono text-data-mono text-primary">#VN-9823-XC</td>
+<td class="px-lg py-md font-body-sm text-on-surface font-medium">Bello, Musa Mohammed</td>
+<td class="px-lg py-md font-data-mono text-data-mono flex items-center gap-2">
+                                    1102 •••• 9934
+                                    <span class="material-symbols-outlined text-sm text-on-surface-variant cursor-pointer hover:text-primary">content_copy</span>
+</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 bg-error/10 text-error rounded-full font-label-caps text-[10px]">
+<span class="w-1.5 h-1.5 bg-error rounded-full"></span>
+                                        REJECTED
+                                    </span>
+</td>
+<td class="px-lg py-md font-body-sm text-on-surface-variant">2.1s</td>
+<td class="px-lg py-md">
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined">report</span></button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-lg py-md font-data-mono text-data-mono text-primary">#VN-9823-XD</td>
+<td class="px-lg py-md font-body-sm text-on-surface font-medium">Adeyemi, Tunde Victor</td>
+<td class="px-lg py-md font-data-mono text-data-mono flex items-center gap-2">
+                                    6631 •••• 0042
+                                    <span class="material-symbols-outlined text-sm text-on-surface-variant cursor-pointer hover:text-primary">content_copy</span>
+</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center gap-1.5 px-2 py-1 bg-primary/10 text-primary rounded-full font-label-caps text-[10px]">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                                        VERIFIED
+                                    </span>
+</td>
+<td class="px-lg py-md font-body-sm text-on-surface-variant">98ms</td>
+<td class="px-lg py-md">
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined">visibility</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination / Table Footer -->
+<div class="px-lg py-md flex justify-between items-center bg-surface-container-low border-t border-outline-variant">
+<p class="text-body-sm text-on-surface-variant">Showing <span class="font-bold">1 - 4</span> of 12,500 records</p>
+<div class="flex gap-2">
+<button class="p-2 border border-outline rounded-lg text-on-surface-variant hover:bg-surface-container-high disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-2 border border-outline rounded-lg text-on-surface-variant hover:bg-surface-container-high">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+<!-- Atmospheric Footer Image Background Decoration -->
+<div class="fixed bottom-0 right-0 w-1/3 h-64 pointer-events-none opacity-5 -z-10 overflow-hidden">
+<img alt="Atmospheric overlay" class="w-full h-full object-cover mix-blend-overlay" data-alt="A sophisticated digital pattern composed of interlocking geometric lines and nodes resembling a neural network. The background is a clean, bright white, with the network lines rendered in a deep forest green and shimmering gold. The lighting is soft and ambient, creating a high-end corporate tech aesthetic that emphasizes security and connectivity. The overall mood is professional, precise, and technologically advanced." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7P5mq-s1zs6wkFi63UyoNU8Zmf3HRKdtnnR3SHYl2WXuoBmKjNggdpoRnNRTvle9ZWYG98R343jG8oxDk-3TCXLnmdCyES9GITGFhVAeqDyglFZANzViEWU_moWSojjNjHL5HrTETsKmi9z4IRFuErTbsNOyO7O88SKrGT4ZzQza59HmgrgmQGs6SLcFC9_jzl4Sx66uqi1-_xPy9j34k3lbvuKhrT4HBb45v-5S5T0q0gvaZMvkCbwLEABwj1AZM7Xxas0GbhA"/>
+</div>
+</main>
+<script>
+        // Micro-interaction for Copy-to-Clipboard Monospaced Strings
+        document.querySelectorAll('.material-symbols-outlined[data-icon="content_copy"]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const text = this.parentElement.innerText.trim();
+                const icon = this;
+                icon.innerText = 'check';
+                icon.classList.add('text-primary');
+                setTimeout(() => {
+                    icon.innerText = 'content_copy';
+                    icon.classList.remove('text-primary');
+                }, 2000);
+            });
+        });
+
+        // Simulate progress bar movement for visual effect
+        let progress = 68;
+        const progressBar = document.querySelector('.bg-secondary-container');
+        const progressText = document.querySelector('.font-display-lg');
+
+        function updateProgress() {
+            if (progress < 100) {
+                progress += Math.random() * 0.1;
+                if (progressBar) progressBar.style.width = progress + '%';
+                if (progressText) progressText.innerHTML = Math.floor(progress) + '<span class="text-headline-lg">%</span>';
+            }
+            requestAnimationFrame(updateProgress);
+        }
+        
+        // Start simulation after a short delay
+        setTimeout(updateProgress, 1000);
+    </script>
+</body></html>

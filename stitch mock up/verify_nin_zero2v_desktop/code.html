@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&amp;family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#eae7e7",
+                    "error": "#ba1a1a",
+                    "secondary": "#795900",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#0d4c2e",
+                    "inverse-primary": "#97d4ac",
+                    "background": "#fcf9f8",
+                    "surface-container-highest": "#e5e2e1",
+                    "tertiary-fixed-dim": "#c8c6c2",
+                    "on-tertiary": "#ffffff",
+                    "primary": "#00341c",
+                    "surface-dim": "#dcd9d9",
+                    "secondary-fixed-dim": "#f6be39",
+                    "on-secondary-container": "#715300",
+                    "inverse-on-surface": "#f3f0ef",
+                    "tertiary-container": "#42423f",
+                    "on-surface-variant": "#404942",
+                    "on-secondary-fixed": "#261a00",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "outline-variant": "#c0c9c0",
+                    "on-secondary-fixed-variant": "#5c4300",
+                    "on-primary-container": "#80bc95",
+                    "on-tertiary-fixed": "#1b1c19",
+                    "surface-container": "#f0eded",
+                    "on-primary-fixed": "#002110",
+                    "surface-tint": "#306949",
+                    "on-background": "#1c1b1b",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e5e2e1",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#ffc641",
+                    "tertiary": "#2c2c29",
+                    "on-primary-fixed-variant": "#145132",
+                    "primary-fixed": "#b3f1c7",
+                    "on-tertiary-container": "#afaeaa",
+                    "on-surface": "#1c1b1b",
+                    "on-tertiary-fixed-variant": "#474744",
+                    "tertiary-fixed": "#e4e2dd",
+                    "surface": "#fcf9f8",
+                    "secondary-fixed": "#ffdfa0",
+                    "surface-container-low": "#f6f3f2",
+                    "surface-bright": "#fcf9f8",
+                    "inverse-surface": "#313030",
+                    "on-primary": "#ffffff",
+                    "outline": "#707971",
+                    "primary-fixed-dim": "#97d4ac"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "gutter": "16px",
+                    "container-margin": "20px"
+            },
+            "fontFamily": {
+                    "label-caps": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg-mobile": ["Outfit"],
+                    "headline-lg": ["Outfit"],
+                    "display-lg": ["Outfit"],
+                    "data-mono": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "label-caps": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "data-mono": ["16px", {"lineHeight": "24px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.identity-card-watermark {
+    position: relative;
+    overflow: hidden
+    }
+.identity-card-watermark::after {
+    content: "";
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    width: 120px;
+    height: 120px;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAhLwETOTK_XrZxDZeOhg-x1ngFD8rEDuL-EpBboAjyqsBdOpWBjhbNoE7cLHz1w5ibz1bNU0x37B4TyeMpZRYQXQgYLkL4KQqLTwbFxM6w-b7GUfFxwcEPAjWHVrz_P8hbTmEBNNwg9MMFcqyoaLGL4TV2tJo5AM7tW2hpetgSxGBNY3o_nNbWCrnQjhTGkkoYWQr4pnujAaaT67To4gdtt0ZUCuqlKnBVe293e5EwGG4nzajpjNefeCUQvTjZCCfQVG1iooyLuQ);
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 0
+    }</style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- SideNavBar Component -->
+<aside class="bg-primary dark:bg-primary-container shadow-xl h-screen w-64 fixed left-0 top-0 flex flex-col py-xl z-50">
+<div class="px-lg mb-xl">
+<div class="flex items-center gap-3">
+<span class="text-headline-lg font-headline-lg font-bold text-on-primary">zero2v</span>
+</div>
+<p class="font-label-caps text-label-caps text-on-primary-fixed-variant opacity-70 mt-1">Sovereign Trust Identity</p>
+</div>
+<button class="mx-lg mb-xl bg-secondary-container text-on-secondary-container px-md py-sm rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-secondary-fixed transition-colors">
+<span class="material-symbols-outlined">add</span>
+            New Verification
+        </button>
+<nav class="flex-1 space-y-1">
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 hover:bg-primary-fixed-variant/20 transition-all duration-200 pl-5 py-3 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="text-secondary-fixed font-bold border-l-4 border-secondary-fixed pl-4 py-3 flex items-center gap-3 hover:bg-primary-fixed-variant/20 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<span>NIN Verification</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 hover:bg-primary-fixed-variant/20 transition-all duration-200 pl-5 py-3 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" data-icon="layers">layers</span>
+<span>Batch Processing</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 hover:bg-primary-fixed-variant/20 transition-all duration-200 pl-5 py-3 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" data-icon="edit_document">edit_document</span>
+<span>Modification Orders</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 hover:bg-primary-fixed-variant/20 transition-all duration-200 pl-5 py-3 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>Transactions</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 hover:bg-primary-fixed-variant/20 transition-all duration-200 pl-5 py-3 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span>Wallet</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-on-primary/10 pt-lg space-y-1">
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 hover:bg-primary-fixed-variant/20 transition-all duration-200 pl-5 py-2 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 hover:bg-primary-fixed-variant/20 transition-all duration-200 pl-5 py-2 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span>Support</span>
+</a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 hover:bg-primary-fixed-variant/20 transition-all duration-200 pl-5 py-2 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar Component -->
+<header class="bg-surface-container-lowest dark:bg-surface-dim border-b border-outline-variant full-width h-16 sticky top-0 z-40 flex justify-between items-center px-lg ml-64 shadow-sm">
+<div class="flex items-center gap-lg">
+<h1 class="font-display-lg text-display-lg text-primary text-[24px]">NIN Verification</h1>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">search</span>
+</div>
+<input class="bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 w-64 focus-within:ring-2 focus-within:ring-primary/20 transition-all outline-none text-body-sm" placeholder="Search records..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="bg-primary text-on-primary px-md py-sm rounded-lg font-bold text-body-sm hover:opacity-90 transition-opacity">Fund Wallet</button>
+<button class="text-on-surface-variant font-medium hover:text-primary transition-colors cursor-pointer px-sm">Help</button>
+<div class="flex items-center gap-sm ml-4">
+<button class="text-on-surface-variant hover:text-primary p-2 rounded-full hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary p-2 rounded-full hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined" data-icon="apps">apps</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-secondary-fixed border border-outline flex items-center justify-center ml-2 overflow-hidden">
+<img alt="Administrator Profile" data-alt="Close up portrait of a professional African man in a business suit against a clean, corporate grey background. High-quality lighting highlights the authoritative and trustworthy expression of a government official or senior administrator, fitting a professional institutional design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsTm7kjse1ILa03sNEBx6c_UZSUfdFgznfWBYKzEVLGybDQbCcB2ZEB5mLoJKBa7nWR0Ks1CyD2tH3fVkUvAYzHnFamBOgdvTZRgHDf-TOktLdNSTCoJgFQDMYF6goeKfD-A6e1tWklQQ0sDHPhh7R_GmDh6SvZDRIzaNxKHzm7wBPhGr_KL9F6CdZW_7Zi5fixIkWxZSz7VrTklALTRF1cY1XGAhbNrHmHPcUZvXsngk1jGXRfvGCKPxqWwUGizboMMSZWf4Wvw"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 p-xl max-w-[1200px] mx-auto">
+<!-- Tabbed Navigation -->
+<div class="flex gap-lg border-b border-outline-variant mb-xl">
+<button class="pb-md text-primary font-bold border-b-2 border-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">fingerprint</span>
+                NIN Number
+            </button>
+<button class="pb-md text-on-surface-variant font-medium hover:text-primary transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">phone_android</span>
+                NIN Phone
+            </button>
+<button class="pb-md text-on-surface-variant font-medium hover:text-primary transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">track_changes</span>
+                NIN Tracking
+            </button>
+</div>
+<div class="grid grid-cols-12 gap-xl">
+<!-- Left Column: Verification Form -->
+<div class="col-span-12 lg:col-span-8 space-y-xl">
+<div class="bg-surface-container-lowest rounded-xl p-xl shadow-sm identity-card-watermark relative">
+<div class="flex justify-between items-start mb-lg relative z-10">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary">Direct NIN Lookup</h2>
+<p class="text-on-surface-variant text-body-md mt-2">Enter the 11-digit National Identification Number for instant validation.</p>
+</div>
+<span class="bg-secondary-fixed text-on-secondary-fixed px-md py-sm rounded-full font-label-caps text-label-caps flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">payments</span>
+                            ₦150 per lookup
+                        </span>
+</div>
+<div class="space-y-xl relative z-10">
+<div>
+<label class="block font-label-caps text-label-caps text-outline mb-sm">NIN NUMBER (11 DIGITS)</label>
+<div class="relative group">
+<input class="w-full text-[32px] font-data-mono tracking-widest border border-outline-variant rounded-xl p-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:opacity-30" maxlength="11" placeholder="0000 0000 000" type="text"/>
+<div class="absolute right-lg top-1/2 -translate-y-1/2 flex gap-md">
+<span class="material-symbols-outlined text-outline-variant hover:text-primary cursor-pointer transition-colors" title="Copy to clipboard">content_copy</span>
+<span class="material-symbols-outlined text-outline-variant hover:text-primary cursor-pointer transition-colors" title="Scan ID Card">photo_camera</span>
+</div>
+</div>
+</div>
+<div class="flex items-start gap-md bg-surface-container-low p-md rounded-lg">
+<div class="pt-1">
+<input class="h-5 w-5 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer" id="consent" type="checkbox"/>
+</div>
+<label class="text-body-sm text-on-surface-variant leading-relaxed cursor-pointer" for="consent">
+                                I hereby confirm that I have obtained explicit consent from the data subject to verify their identity in accordance with the <strong>Nigeria Data Protection Regulation (NDPR)</strong> and zero2v terms of service.
+                            </label>
+</div>
+<div class="flex items-center justify-between">
+<button class="bg-primary text-on-primary px-[48px] py-xl h-[56px] rounded-xl font-bold flex items-center justify-center gap-3 hover:opacity-95 transition-all shadow-md active:scale-95 group">
+<span class="material-symbols-outlined group-hover:animate-pulse">shield_person</span>
+                                VERIFY IDENTITY
+                            </button>
+<!-- Low Balance Warning -->
+<div class="flex items-center gap-2 text-error bg-error-container/30 px-md py-sm rounded-lg border border-error/10">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+<span class="font-label-caps text-label-caps">Low Balance: ₦450.00 remaining</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Info Grid -->
+<div class="grid grid-cols-2 gap-lg">
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant flex gap-md">
+<div class="bg-primary/5 p-md rounded-lg h-fit">
+<span class="material-symbols-outlined text-primary">bolt</span>
+</div>
+<div>
+<h3 class="font-bold text-primary mb-1">Instant Report</h3>
+<p class="text-body-sm text-on-surface-variant">Data is pulled directly from NIN ecosystem in under 1.2 seconds with 99.9% uptime.</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant flex gap-md">
+<div class="bg-primary/5 p-md rounded-lg h-fit">
+<span class="material-symbols-outlined text-primary">lock</span>
+</div>
+<div>
+<h3 class="font-bold text-primary mb-1">Secure Hash</h3>
+<p class="text-body-sm text-on-surface-variant">All lookups generate a unique cryptographic hash for audit trailing and legal compliance.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Context/Stats -->
+<div class="col-span-12 lg:col-span-4 space-y-xl">
+<!-- Status Card -->
+<div class="bg-primary text-on-primary p-xl rounded-xl shadow-xl relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="font-label-caps text-label-caps opacity-70 mb-4">SYSTEM STATUS</h3>
+<div class="flex items-center gap-3 mb-6">
+<span class="h-3 w-3 bg-[#4ade80] rounded-full animate-ping"></span>
+<span class="font-bold text-headline-lg-mobile text-[20px]">NIMC Gateway: Live</span>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between text-body-sm opacity-80">
+<span>Total Queries (Today)</span>
+<span class="font-data-mono">1,429</span>
+</div>
+<div class="flex justify-between text-body-sm opacity-80">
+<span>Avg Response Time</span>
+<span class="font-data-mono">0.8s</span>
+</div>
+<div class="h-1 bg-on-primary/20 rounded-full overflow-hidden">
+<div class="h-full bg-secondary-fixed w-[92%]"></div>
+</div>
+</div>
+</div>
+<!-- Abstract Background Pattern -->
+<div class="absolute -right-10 -bottom-10 opacity-10">
+<span class="material-symbols-outlined text-[180px]">hub</span>
+</div>
+</div>
+<!-- Recent Activity -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-bold text-primary">Recent Logs</h3>
+<a class="text-primary text-body-sm hover:underline" href="#">View All</a>
+</div>
+<div class="space-y-md">
+<div class="flex items-center justify-between p-sm hover:bg-surface-container-low rounded transition-colors">
+<div class="flex items-center gap-3">
+<div class="bg-primary-fixed p-2 rounded text-on-primary-fixed">
+<span class="material-symbols-outlined text-[18px]">person</span>
+</div>
+<div>
+<div class="text-body-sm font-bold">2384...1102</div>
+<div class="text-[10px] text-outline">SUCCESS • 2M AGO</div>
+</div>
+</div>
+<span class="text-primary font-bold text-body-sm">-₦150</span>
+</div>
+<div class="flex items-center justify-between p-sm hover:bg-surface-container-low rounded transition-colors">
+<div class="flex items-center gap-3">
+<div class="bg-primary-fixed p-2 rounded text-on-primary-fixed">
+<span class="material-symbols-outlined text-[18px]">person</span>
+</div>
+<div>
+<div class="text-body-sm font-bold">9021...5562</div>
+<div class="text-[10px] text-outline">SUCCESS • 14M AGO</div>
+</div>
+</div>
+<span class="text-primary font-bold text-body-sm">-₦150</span>
+</div>
+<div class="flex items-center justify-between p-sm hover:bg-surface-container-low rounded transition-colors">
+<div class="flex items-center gap-3">
+<div class="bg-error-container p-2 rounded text-on-error-container">
+<span class="material-symbols-outlined text-[18px]">error</span>
+</div>
+<div>
+<div class="text-body-sm font-bold">1122...0091</div>
+<div class="text-[10px] text-error uppercase">INVALID • 45M AGO</div>
+</div>
+</div>
+<span class="text-on-surface-variant font-bold text-body-sm">₦0.00</span>
+</div>
+</div>
+</div>
+<!-- Ad/Graphic Placeholder -->
+<div class="rounded-xl overflow-hidden shadow-sm relative group h-48">
+<img class="w-full h-full object-cover" data-alt="Sophisticated 3D abstract render of interconnected digital nodes and glowing fiber optic cables, symbolizing secure data flow and national connectivity. The image uses a deep forest green and gold lighting scheme, matching a professional government technology brand, with a shallow depth of field and soft ambient occlusion for a premium look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrWcOWwnl0P2zxjmmoX5iZcmi8dvVW8ROlto36OgfUMmMj9BbbNwIIvPrzybEW2lUfnHaOwhZMTf32hI2uA9F04Y2dLBSCbPK49Ske21G6lLy79Y_pPRHyboT-hLt8xelhBfaqJWYsyX4Tr_ktJh5949oBgLZ_j9vwQPYN7YCOilR10mcqHNQj6LU1qMtoZMLvUmfcQ68cNdMSC-okawNfZ1DGpIycgKDTkiuPtOnd-TaYJf60Pu4FFl56zK501xSBHK-zK_Ohzg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent p-lg flex flex-col justify-end">
+<p class="text-white font-bold text-body-sm">Upgrade to Enterprise</p>
+<p class="text-white/70 text-[12px]">Get volume discounts for over 5,000 lookups.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Micro-interactions for NIN input formatting
+        const ninInput = document.querySelector('input[placeholder="0000 0000 000"]');
+        ninInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+            
+            // Format with spaces
+            let formatted = '';
+            for (let i = 0; i < value.length; i++) {
+                if (i === 4 || i === 8) formatted += ' ';
+                formatted += value[i];
+            }
+            e.target.value = formatted;
+        });
+
+        // Simple button active state visual
+        const verifyBtn = document.querySelector('button.bg-primary');
+        verifyBtn.addEventListener('mousedown', () => {
+            verifyBtn.classList.add('scale-95');
+        });
+        verifyBtn.addEventListener('mouseup', () => {
+            verifyBtn.classList.remove('scale-95');
+        });
+    </script>
+</body></html>

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>zero2v Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&amp;family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-high": "#eae7e7",
+                      "error": "#ba1a1a",
+                      "secondary": "#795900",
+                      "on-error-container": "#93000a",
+                      "primary-container": "#0d4c2e",
+                      "inverse-primary": "#97d4ac",
+                      "background": "#fcf9f8",
+                      "surface-container-highest": "#e5e2e1",
+                      "tertiary-fixed-dim": "#c8c6c2",
+                      "on-tertiary": "#ffffff",
+                      "primary": "#00341c",
+                      "surface-dim": "#dcd9d9",
+                      "secondary-fixed-dim": "#f6be39",
+                      "on-secondary-container": "#715300",
+                      "inverse-on-surface": "#f3f0ef",
+                      "tertiary-container": "#42423f",
+                      "on-surface-variant": "#404942",
+                      "on-secondary-fixed": "#261a00",
+                      "on-secondary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "outline-variant": "#c0c9c0",
+                      "on-secondary-fixed-variant": "#5c4300",
+                      "on-primary-container": "#80bc95",
+                      "on-tertiary-fixed": "#1b1c19",
+                      "surface-container": "#f0eded",
+                      "on-primary-fixed": "#002110",
+                      "surface-tint": "#306949",
+                      "on-background": "#1c1b1b",
+                      "error-container": "#ffdad6",
+                      "surface-variant": "#e5e2e1",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-container": "#ffc641",
+                      "tertiary": "#2c2c29",
+                      "on-primary-fixed-variant": "#145132",
+                      "primary-fixed": "#b3f1c7",
+                      "on-tertiary-container": "#afaeaa",
+                      "on-surface": "#1c1b1b",
+                      "on-tertiary-fixed-variant": "#474744",
+                      "tertiary-fixed": "#e4e2dd",
+                      "surface": "#fcf9f8",
+                      "secondary-fixed": "#ffdfa0",
+                      "surface-container-low": "#f6f3f2",
+                      "surface-bright": "#fcf9f8",
+                      "inverse-surface": "#313030",
+                      "on-primary": "#ffffff",
+                      "outline": "#707971",
+                      "primary-fixed-dim": "#97d4ac"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "32px",
+                      "md": "16px",
+                      "lg": "24px",
+                      "base": "4px",
+                      "xs": "4px",
+                      "sm": "8px",
+                      "gutter": "16px",
+                      "container-margin": "20px"
+              },
+              "fontFamily": {
+                      "label-caps": ["Inter"],
+                      "body-md": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "headline-lg-mobile": ["Outfit"],
+                      "headline-lg": ["Outfit"],
+                      "display-lg": ["Outfit"],
+                      "data-mono": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "label-caps": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "data-mono": ["16px", {"lineHeight": "24px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        body { background-color: #f7f5f0; }
+        .active-tab { border-left-width: 4px; }
+        .glass-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(8px); }
+        .coat-of-arms-overlay {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            opacity: 0.05;
+            pointer-events: none;
+            width: 80px;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-background antialiased overflow-x-hidden">
+<!-- SideNavBar Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-primary dark:bg-primary-container shadow-xl flex flex-col py-xl z-50">
+<div class="px-lg mb-xl">
+<h1 class="text-headline-lg font-headline-lg font-bold text-on-primary">zero2v</h1>
+<p class="text-on-primary-fixed-variant opacity-70 text-xs uppercase tracking-widest font-label-caps">Sovereign Trust Identity</p>
+</div>
+<button class="mx-lg mb-lg bg-secondary-container text-on-secondary-container py-3 px-4 rounded-xl flex items-center justify-center gap-2 font-bold hover:scale-98 active:scale-95 transition-all shadow-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+            New Verification
+        </button>
+<nav class="flex-1 space-y-1">
+<a class="text-secondary-fixed font-bold border-l-4 border-secondary-fixed pl-4 py-3 flex items-center gap-3 bg-primary-fixed-variant/10" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 hover:bg-primary-fixed-variant/20 transition-all duration-200 pl-5 py-3 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+                NIN Verification
+            </a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 hover:bg-primary-fixed-variant/20 transition-all duration-200 pl-5 py-3 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">layers</span>
+                Batch Processing
+            </a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 hover:bg-primary-fixed-variant/20 transition-all duration-200 pl-5 py-3 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">edit_document</span>
+                Modification Orders
+            </a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 hover:bg-primary-fixed-variant/20 transition-all duration-200 pl-5 py-3 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">history</span>
+                Transactions
+            </a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 hover:bg-primary-fixed-variant/20 transition-all duration-200 pl-5 py-3 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+                Wallet
+            </a>
+</nav>
+<div class="mt-auto border-t border-on-primary/10 pt-lg space-y-1">
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+                Support
+            </a>
+<a class="text-on-primary-fixed-variant opacity-80 hover:opacity-100 pl-5 py-3 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<!-- Main Workspace -->
+<main class="ml-64 min-h-screen flex flex-col">
+<!-- TopNavBar Shell -->
+<header class="full-width h-16 sticky top-0 z-40 bg-surface-container-lowest dark:bg-surface-dim border-b border-outline-variant flex justify-between items-center px-lg shadow-sm">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full focus:ring-2 focus:ring-primary/20 text-body-sm" placeholder="Search NIN, Transaction ID..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<button class="text-primary font-bold hover:text-primary transition-colors cursor-pointer text-body-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-md">add</span>
+                    Fund Wallet
+                </button>
+<div class="flex items-center gap-sm">
+<button class="p-2 hover:bg-surface-container rounded-full text-on-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-full text-on-surface-variant">
+<span class="material-symbols-outlined">apps</span>
+</button>
+</div>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="Administrator Profile" class="w-full h-full object-cover" data-alt="A professional portrait of a senior Nigerian male administrator in a corporate setting. He is wearing a clean white dress shirt and a dark green blazer, smiling confidently. The lighting is bright and architectural, reflecting a modern governmental headquarters with soft shadows and a professional, trustworthy atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAR0ObimqE8QehWxEzdCgaP4oHAAHPALkW2t6iXa9pQIcm5XMekXMRLTRkVtpLz6VRoUaaJQ8963TL2KivFLcADcEBzXVYkCVlQlW0EDOqRAVpIgGzUqWwbANnIAyc4DQtdDyk_M9wfvYOq3lj6Ys5hproej5gQhVYzV9F8qls617oJ-gC3kDB_KkiKZ8AT8OfLFoRAZPpf4GR5LDc2U1wIzkT3NlRoPhdVo_LZyuS872xHX-UvL2CjvYlKrMJ1g5Cm08LkvhQjPw"/>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="p-xl space-y-xl">
+<!-- Hero Wallet Section -->
+<section class="relative overflow-hidden bg-primary-container rounded-[2rem] p-lg text-on-primary flex flex-col md:flex-row justify-between items-center shadow-2xl border border-primary-fixed/20">
+
+<div class="relative z-10 space-y-2">
+<p class="font-label-caps text-on-primary-container opacity-80">Available Balance</p>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-secondary-fixed">₦</span>
+<h2 class="font-display-lg text-display-lg text-secondary-fixed tracking-tight" id="balance">2,450,800.00</h2>
+</div>
+<div class="flex gap-4 mt-4">
+<button class="bg-secondary-fixed text-on-secondary-fixed px-lg py-sm rounded-full font-bold hover:bg-secondary-fixed-dim transition-colors shadow-lg">Fund Wallet</button>
+<button class="bg-primary/20 backdrop-blur-md border border-on-primary/10 text-on-primary px-lg py-sm rounded-full font-bold hover:bg-primary/30 transition-colors">Withdraw</button>
+</div>
+</div>
+<div class="relative z-10 hidden lg:block bg-surface-container-lowest/10 backdrop-blur-xl p-md rounded-2xl border border-on-primary/10 w-64 shadow-inner">
+<p class="text-xs font-label-caps mb-2 opacity-60">Verification Usage (MTD)</p>
+<div class="h-2 w-full bg-on-primary/10 rounded-full overflow-hidden">
+<div class="h-full bg-secondary-fixed w-3/4"></div>
+</div>
+<div class="flex justify-between mt-2 text-xs font-bold">
+<span>7,500 / 10,000</span>
+<span class="text-secondary-fixed">75%</span>
+</div>
+</div>
+</section>
+<!-- Quick Stats Row -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border border-outline-variant/30 flex flex-col justify-between hover:shadow-md transition-shadow group">
+<div class="flex justify-between items-start">
+<p class="font-label-caps text-on-surface-variant">Today's Transactions</p>
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">today</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg mt-sm">₦ 124,500</h3>
+<p class="text-body-sm text-green-600 font-bold flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-sm">arrow_upward</span> 12% vs yesterday
+                    </p>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border border-outline-variant/30 flex flex-col justify-between hover:shadow-md transition-shadow group">
+<div class="flex justify-between items-start">
+<p class="font-label-caps text-on-surface-variant">Total This Month</p>
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">calendar_month</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg mt-sm">₦ 3,210,000</h3>
+<p class="text-body-sm text-on-surface-variant opacity-60 mt-1">Target: ₦ 5M</p>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border border-outline-variant/30 flex flex-col justify-between hover:shadow-md transition-shadow group">
+<div class="flex justify-between items-start">
+<p class="font-label-caps text-on-surface-variant">Average Spent / Day</p>
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">payments</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg mt-sm">₦ 107,000</h3>
+<p class="text-body-sm text-error font-bold flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-sm">arrow_downward</span> 4% decrease
+                    </p>
+</div>
+</section>
+<!-- Quick Actions Grid (Bento Style) -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-lg">
+<div class="md:col-span-2 bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm border border-outline-variant/30 hover:border-primary transition-all flex flex-col cursor-pointer group">
+<div class="p-lg flex-1">
+<div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-on-primary mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<h4 class="font-headline-lg text-headline-lg-mobile mb-2">NIN Verify</h4>
+<p class="text-body-sm text-on-surface-variant">Premium individual NIN verification with biometric confirmation and face matching capabilities.</p>
+</div>
+<div class="bg-surface-container px-lg py-sm flex justify-between items-center group-hover:bg-primary-fixed-dim/20 transition-colors">
+<span class="font-label-caps text-primary">Launch Action</span>
+<span class="material-symbols-outlined text-primary">arrow_forward</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-lg shadow-sm border border-outline-variant/30 hover:border-primary transition-all cursor-pointer group">
+<div class="w-10 h-10 bg-secondary-container rounded-xl flex items-center justify-center text-on-secondary-container mb-md group-hover:rotate-12 transition-transform">
+<span class="material-symbols-outlined">call</span>
+</div>
+<h4 class="font-bold text-lg mb-1">NIN Phone</h4>
+<p class="text-body-sm text-on-surface-variant">Lookup identity by phone number.</p>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-lg shadow-sm border border-outline-variant/30 hover:border-primary transition-all cursor-pointer group">
+<div class="w-10 h-10 bg-tertiary-fixed-dim rounded-xl flex items-center justify-center text-on-tertiary-fixed mb-md group-hover:rotate-12 transition-transform">
+<span class="material-symbols-outlined">dataset</span>
+</div>
+<h4 class="font-bold text-lg mb-1">Batch Lookup</h4>
+<p class="text-body-sm text-on-surface-variant">Upload CSV for bulk verification.</p>
+</div>
+<div class="md:col-span-2 bg-primary dark:bg-primary-container rounded-2xl p-lg shadow-lg border border-on-primary/10 hover:shadow-2xl transition-all cursor-pointer group flex items-center justify-between relative overflow-hidden">
+<div class="relative z-10">
+<h4 class="font-headline-lg text-headline-lg-mobile text-on-primary mb-2">Active Orders</h4>
+<p class="text-body-sm text-on-primary/70">Manage 24 pending NIN modification requests across 12 branch offices.</p>
+<button class="mt-4 bg-secondary-fixed text-on-secondary-fixed py-2 px-6 rounded-full font-bold">View Orders</button>
+</div>
+<span class="material-symbols-outlined text-[80px] absolute right-4 top-1/2 -translate-y-1/2 opacity-10 text-on-primary">edit_document</span>
+</div>
+<div class="md:col-span-2 bg-surface-container-lowest rounded-2xl p-lg shadow-sm border border-outline-variant/30 hover:border-primary transition-all cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 bg-surface-container rounded-2xl flex items-center justify-center text-primary group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-3xl">insights</span>
+</div>
+<div>
+<h4 class="font-bold text-lg">Detailed Analytics</h4>
+<p class="text-body-sm text-on-surface-variant">Review historical data and trends across your verification streams.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Activity Table Section -->
+<section class="bg-surface-container-lowest rounded-2xl shadow-sm border border-outline-variant/30 overflow-hidden">
+<div class="p-lg border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-headline-lg text-headline-lg-mobile">Recent Activity</h3>
+<div class="flex gap-2">
+<button class="p-2 border border-outline-variant rounded-lg hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+</button>
+<button class="p-2 border border-outline-variant rounded-lg hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-sm">download</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low text-on-surface-variant font-label-caps uppercase text-xs">
+<tr>
+<th class="px-lg py-md">Verification ID</th>
+<th class="px-lg py-md">Type</th>
+<th class="px-lg py-md">Reference</th>
+<th class="px-lg py-md">Date</th>
+<th class="px-lg py-md">Status</th>
+<th class="px-lg py-md text-right">Fee</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low/50 transition-colors cursor-pointer group">
+<td class="px-lg py-md font-data-mono text-body-sm">VN-890214-X</td>
+<td class="px-lg py-md text-body-sm">NIN Biometric</td>
+<td class="px-lg py-md text-body-sm font-medium">Babatunde Adeniyi</td>
+<td class="px-lg py-md text-body-sm opacity-60">Today, 14:23</td>
+<td class="px-lg py-md">
+<span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-bold uppercase">Success</span>
+</td>
+<td class="px-lg py-md text-right font-bold text-body-sm">₦ 250.00</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors cursor-pointer group">
+<td class="px-lg py-md font-data-mono text-body-sm">VN-890211-P</td>
+<td class="px-lg py-md text-body-sm">Phone Match</td>
+<td class="px-lg py-md text-body-sm font-medium">+234 812 *** 4492</td>
+<td class="px-lg py-md text-body-sm opacity-60">Today, 11:05</td>
+<td class="px-lg py-md">
+<span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-bold uppercase">Pending</span>
+</td>
+<td class="px-lg py-md text-right font-bold text-body-sm">₦ 150.00</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors cursor-pointer group">
+<td class="px-lg py-md font-data-mono text-body-sm">VN-889502-M</td>
+<td class="px-lg py-md text-body-sm">Mod. Approval</td>
+<td class="px-lg py-md text-body-sm font-medium">Sarah Uzor-Mba</td>
+<td class="px-lg py-md text-body-sm opacity-60">Yesterday, 17:45</td>
+<td class="px-lg py-md">
+<span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-bold uppercase">Success</span>
+</td>
+<td class="px-lg py-md text-right font-bold text-body-sm">₦ 5,000.00</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors cursor-pointer group">
+<td class="px-lg py-md font-data-mono text-body-sm">VN-889100-F</td>
+<td class="px-lg py-md text-body-sm">NIN Biometric</td>
+<td class="px-lg py-md text-body-sm font-medium">Unknown Subject</td>
+<td class="px-lg py-md text-body-sm opacity-60">Yesterday, 16:20</td>
+<td class="px-lg py-md">
+<span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs font-bold uppercase">Failed</span>
+</td>
+<td class="px-lg py-md text-right font-bold text-body-sm">₦ 0.00</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors cursor-pointer group">
+<td class="px-lg py-md font-data-mono text-body-sm">VN-888992-B</td>
+<td class="px-lg py-md text-body-sm">Batch Lookup</td>
+<td class="px-lg py-md text-body-sm font-medium">Loan_Applicants_Oct.csv</td>
+<td class="px-lg py-md text-body-sm opacity-60">24 Oct, 09:12</td>
+<td class="px-lg py-md">
+<span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-bold uppercase">Success</span>
+</td>
+<td class="px-lg py-md text-right font-bold text-body-sm">₦ 32,500.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-md flex justify-center bg-surface-container-low/30">
+<button class="text-primary font-bold flex items-center gap-2 hover:underline">
+                        View All Activity
+                        <span class="material-symbols-outlined text-sm">arrow_downward</span>
+</button>
+</div>
+</section>
+</div>
+<footer class="mt-auto p-lg text-center text-on-surface-variant opacity-40 text-xs">
+            © 2024 zero2v Sovereign Trust Identity. Fully Licensed by NIMC.
+        </footer>
+</main>
+<!-- Floating Action Button -->
+<div class="fixed bottom-lg right-lg">
+<button class="w-16 h-16 bg-secondary-container text-on-secondary-container rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all group">
+<span class="material-symbols-outlined text-3xl">chat_bubble</span>
+<span class="absolute right-full mr-4 bg-inverse-surface text-inverse-on-surface px-4 py-2 rounded-lg text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Live Support</span>
+</button>
+</div>
+<script>
+        // Micro-interaction for balance counter
+        function animateValue(obj, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const val = Math.floor(progress * (end - start) + start);
+                obj.innerHTML = val.toLocaleString() + ".00";
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        const balanceEl = document.getElementById('balance');
+        // Simple trigger for demo
+        setTimeout(() => {
+            // No real logic here, just placeholder for actual JS interactions
+        }, 500);
+
+        // Sidebar active state logic is handled via static classes for this specific Dashboard view
+    </script>
+</body></html>

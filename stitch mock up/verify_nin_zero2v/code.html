@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>zero2v - NIN Verification</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=Outfit:wght@600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed": "#002110",
+                    "on-error": "#ffffff",
+                    "surface-container": "#f0eded",
+                    "inverse-on-surface": "#f3f0ef",
+                    "on-secondary": "#ffffff",
+                    "surface": "#fcf9f8",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#ffc641",
+                    "primary-fixed-dim": "#97d4ac",
+                    "secondary-fixed-dim": "#f6be39",
+                    "tertiary-container": "#42423f",
+                    "surface-container-highest": "#e5e2e1",
+                    "secondary": "#795900",
+                    "secondary-fixed": "#ffdfa0",
+                    "error": "#ba1a1a",
+                    "surface-dim": "#dcd9d9",
+                    "on-primary": "#ffffff",
+                    "primary-container": "#0d4c2e",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-variant": "#e5e2e1",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#e4e2dd",
+                    "on-tertiary-fixed": "#1b1c19",
+                    "outline-variant": "#c0c9c0",
+                    "tertiary": "#2c2c29",
+                    "on-secondary-fixed": "#261a00",
+                    "on-surface-variant": "#404942",
+                    "on-tertiary-container": "#afaeaa",
+                    "on-background": "#1c1b1b",
+                    "surface-bright": "#fcf9f8",
+                    "primary-fixed": "#b3f1c7",
+                    "on-secondary-container": "#715300",
+                    "on-secondary-fixed-variant": "#5c4300",
+                    "tertiary-fixed-dim": "#c8c6c2",
+                    "surface-container-high": "#eae7e7",
+                    "primary": "#00341c",
+                    "surface-container-low": "#f6f3f2",
+                    "outline": "#707971",
+                    "inverse-primary": "#97d4ac",
+                    "on-tertiary-fixed-variant": "#474744",
+                    "on-surface": "#1c1b1b",
+                    "on-primary-fixed-variant": "#145132",
+                    "background": "#fcf9f8",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#306949",
+                    "on-primary-container": "#80bc95",
+                    "inverse-surface": "#313030"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "gutter": "16px",
+                    "base": "4px",
+                    "container-margin": "20px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "data-mono": ["JetBrains Mono"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Outfit"],
+                    "label-caps": ["Inter"],
+                    "display-lg": ["Outfit"],
+                    "headline-lg-mobile": ["Outfit"]
+            },
+            "fontSize": {
+                    "data-mono": ["16px", {"lineHeight": "24px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-pattern {
+            background-image: radial-gradient(rgba(0, 52, 28, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md text-body-md min-h-screen flex flex-col selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-margin h-16 bg-surface dark:bg-background shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined">person</span>
+</div>
+<h1 class="font-display-lg text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed">zero2v</h1>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container dark:hover:bg-surface-container-highest transition-colors active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+</header>
+<!-- Main Canvas -->
+<main class="flex-grow pt-20 pb-32 px-container-margin bg-pattern">
+<!-- Tab Bar: Sub-Navigation for Verification Types -->
+<div class="w-full mb-8">
+<div class="flex overflow-x-auto gap-4 py-2 hide-scrollbar">
+<button class="whitespace-nowrap px-4 py-2 rounded-full font-label-caps text-label-caps bg-primary text-on-primary shadow-sm ring-1 ring-primary/10">NIN Number</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full font-label-caps text-label-caps bg-surface border border-outline-variant text-on-surface-variant hover:bg-surface-container transition-colors">NIN Phone</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full font-label-caps text-label-caps bg-surface border border-outline-variant text-on-surface-variant hover:bg-surface-container transition-colors">NIN Tracking</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full font-label-caps text-label-caps bg-surface border border-outline-variant text-on-surface-variant hover:bg-surface-container transition-colors">Demographics</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full font-label-caps text-label-caps bg-surface border border-outline-variant text-on-surface-variant hover:bg-surface-container transition-colors">BVN Phone</button>
+</div>
+</div>
+<!-- Verification Form Card -->
+<div class="max-w-xl mx-auto">
+<section class="bg-surface rounded-xl shadow-[0px_4px_12px_rgba(0,52,28,0.1)] p-lg relative overflow-hidden">
+<!-- Subtle Watermark for Nigerian Context -->
+<div class="absolute -top-4 -right-4 opacity-[0.03] pointer-events-none">
+<span class="material-symbols-outlined text-[160px]" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">NIN Verification</h2>
+<p class="text-body-sm text-on-surface-variant mt-1">Direct Secure Connection to NIMC Database</p>
+</div>
+<div class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-caps text-label-caps flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">payments</span>
+                            ₦150 per lookup
+                        </div>
+</div>
+<div class="space-y-6">
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider" for="nin-input">NIN Number</label>
+<input class="w-full h-14 bg-white border border-outline-variant rounded-xl px-4 font-data-mono text-data-mono text-primary focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none" id="nin-input" maxlength="11" placeholder="Enter 11-digit NIN" type="text"/>
+</div>
+<div class="flex items-start gap-3">
+<div class="flex items-center h-5">
+<input class="w-5 h-5 rounded text-primary focus:ring-primary border-outline-variant cursor-pointer" id="consent" type="checkbox"/>
+</div>
+<label class="text-body-sm text-on-surface-variant leading-tight cursor-pointer" for="consent">
+                                I confirm the subject has consented to this verification and I have viewed their physical identification documents.
+                            </label>
+</div>
+<button class="w-full h-14 bg-primary text-on-primary rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
+                            Verify NIN
+                        </button>
+</div>
+</div>
+</section>
+<!-- Warning Bar -->
+<div class="mt-lg bg-secondary-fixed text-on-secondary-fixed px-lg py-md rounded-xl flex items-center gap-3 animate-pulse">
+<span class="material-symbols-outlined text-on-secondary-fixed">warning</span>
+<p class="font-body-sm">
+<strong>Low balance: ₦100.</strong> Fund wallet to avoid service interruption.
+                </p>
+<button class="ml-auto text-on-secondary-fixed font-bold text-body-sm underline underline-offset-2">Top Up</button>
+</div>
+</div>
+<!-- Instructional / Context Card (Bento Style Fragment) -->
+<div class="max-w-xl mx-auto mt-lg grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-md rounded-xl flex items-center gap-3 border border-outline-variant/30">
+<div class="w-10 h-10 bg-primary-fixed text-on-primary-fixed rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-primary">Instant Report</p>
+<p class="text-[12px] text-on-surface-variant">PDF result available immediately</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-md rounded-xl flex items-center gap-3 border border-outline-variant/30">
+<div class="w-10 h-10 bg-secondary-fixed text-on-secondary-fixed rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined">lock</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-secondary">Secure Hash</p>
+<p class="text-[12px] text-on-surface-variant">End-to-end encrypted queries</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface/80 dark:bg-background/80 backdrop-blur-md shadow-[0px_-4px_12px_rgba(0,52,28,0.1)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:text-primary transition-colors active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-caps text-label-caps">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-container text-on-primary-container dark:text-on-primary-container rounded-xl px-3 py-1 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label-caps text-label-caps">Verify</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:text-primary transition-colors active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="layers">layers</span>
+<span class="font-label-caps text-label-caps">Batch</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:text-primary transition-colors active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-caps text-label-caps">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:text-primary transition-colors active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-caps text-label-caps">History</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions for form
+        const input = document.getElementById('nin-input');
+        input.addEventListener('input', (e) => {
+            // Only allow numbers
+            e.target.value = e.target.value.replace(/[^0-9]/g, '');
+        });
+
+        // Toggle focus state for better visualization
+        input.addEventListener('focus', () => {
+            input.parentElement.classList.add('scale-[1.01]');
+            input.parentElement.style.transition = 'transform 0.2s ease-out';
+        });
+        input.addEventListener('blur', () => {
+            input.parentElement.classList.remove('scale-[1.01]');
+        });
+    </script>
+</body></html>
