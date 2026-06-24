@@ -98,14 +98,3 @@ Organize new modules according to the project scaffold:
 * **Exact Screen Implementation**: Implement every screen to exactly match the stitch mockup designs. Refer to both the reference images (`screen.png`) and the corresponding markup templates (`code.html`) in each screen's directory under `stitch mock up/`.
 * **Mobile-First Layout**: Maintain a mobile-first approach, matching the 390×844px styling of the mockup layouts.
 * **Desktop Responsiveness**: Fully implement desktop responsiveness (using responsive Tailwind prefixes: `sm:`, `md:`, `lg:`, `xl:`) and verify layout correctness on desktop sizes before proceeding to the next screen or implementation phase.
-<!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
-
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-<!-- END:nextjs-agent-rules -->
-
----
-
-# Zero2v Implementation Workflow
-You are working on the `zero2v` NIN Verification App. Before implementing new features or making significant architectural changes, **always consult `REMAINING_TASKS.md`**.
-This file acts as the source of truth for the project's incomplete components and guides your execution priorities.
