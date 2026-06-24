@@ -27,13 +27,13 @@ This document outlines the remaining tasks required to complete the NIN Verifica
 - **Background Worker**: Implement the sequential processing loop with 300ms delays to avoid rate-limiting upstream.
 - **Frontend UI**: Implement `BatchInput` and `BatchProgress` components for polling/SSE and triggering batch runs.
 
-## 6. Dashboard, History, and Orders (Phases 7 & 8)
-- **Orders API**: Implement `/api/orders/route.ts` and `/api/orders/[reference]/route.ts`.
-- **Frontend Views**: Replace static layouts in the Dashboard, History, and Orders pages to fetch data securely from `api_calls`, `modification_orders`, and `transactions` tables.
-- **PDF Export**: Complete the client-side (`jsPDF`) and server-side (`pdfkit`) report generators in `src/lib/pdfExport.ts`.
+## 6. ~~Dashboard, History, and Orders (Phases 7 & 8)~~ (Completed)
+- ~~[x] **Orders API**: Implement `/api/orders/route.ts` and `/api/orders/[reference]/route.ts`.~~
+- ~~[x] **Frontend Views**: Replace static layouts in the Dashboard, History, and Orders pages to fetch data securely from `api_calls`, `modification_orders`, and `transactions` tables.~~
+- ~~[x] **PDF Export**: Complete the client-side (`jsPDF`) and server-side (`pdfkit`) report generators in `src/lib/pdfExport.ts`.~~
 
-## 7. Security, Hardening & Testing (Phases 9 & 10)
-- Add CSP and required security headers to `next.config.ts`.
-- Implement sliding-window rate-limiting in `src/lib/rateLimit.ts` and wire it to middleware.
-- Configure `eslint.config.mjs` to block unauthorized imports.
-- Write unit, integration, and Playwright E2E tests for verification flows and payment webhooks.
+## 7. ~~Security, Hardening & Testing (Phases 9 & 10)~~ (Completed)
+- ~~[x] Add CSP and required security headers to `next.config.ts`.~~
+- ~~[x] Implement sliding-window rate-limiting in `src/lib/rateLimit.ts` and wire it to middleware.~~
+- ~~[x] Configure `eslint.config.mjs` to block unauthorized imports.~~
+- ~~[x] Write unit, integration, and Playwright E2E tests for verification flows and payment webhooks.~~
