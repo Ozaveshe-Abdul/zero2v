@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { serviceSupabase } from '@/lib/supabase/service'
 import { callNINBVNApi } from '@/lib/ninbvn'
+import { getErrorMessage } from '@/types'
 
 export async function GET(req: NextRequest, { params }: { params: Promise<{ reference: string }> }) {
   try {
@@ -41,9 +42,9 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ refe
          .update({ status: newStatus, updated_at: new Date().toISOString() })
          .eq('id', order.id)
 
-       // If rejected, issue refund
+       // If rejected, issue refund (idempotent — refund_wallet skips if already refunded)
        if (newStatus === 'rejected') {
-         await serviceSupabase.rpc('credit_wallet', {
+         await serviceSupabase.rpc('refund_wallet', {
            p_user_id: user.id,
            p_amount: order.amount_charged,
            p_reference: `REF_REJ_${reference}`,
@@ -54,7 +55,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ refe
 
     return NextResponse.json({ ...order, status: newStatus })
 
-  } catch (err: any) {
+  } catch (err: unknown) {
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
   }
 }

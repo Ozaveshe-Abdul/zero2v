@@ -4,6 +4,8 @@ import { callNINBVNApi } from '@/lib/ninbvn'
 import { serviceSupabase } from '@/lib/supabase/service'
 import { z } from 'zod'
 import { auditLog } from '@/lib/auditLog'
+import { getErrorMessage } from '@/types'
+import logger from '@/lib/logger'
 
 const COST = 150
 
@@ -43,13 +45,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 })
   }
 
-  // Deduct credits (throws if insufficient)
+  // Deduct credits (idempotent — safe on retry with same NIN)
   const { error: deductError } = await serviceSupabase
-    .rpc('deduct_credits', {
+    .rpc('safe_deduct_credits', {
       p_user_id: user.id,
       p_amount: COST,
       p_description: 'NIN Verification',
-      p_reference: `NIN_${Date.now()}_${user.id.slice(0, 8)}`,
+      p_reference: `NIN_${user.id}_${parsed.data.nin}`,
     })
   if (deductError) {
     return NextResponse.json(
@@ -70,18 +72,17 @@ export async function POST(req: NextRequest) {
   let result;
   try {
     result = await callNINBVNApi('nin-verification', parsed.data);
-  } catch (upstreamError: any) {
-    result = { status: 'error', message: upstreamError?.message || 'Upstream connection failed' };
+  } catch (upstreamError: unknown) {
+    result = { status: 'error', message: getErrorMessage(upstreamError) };
   }
   const consentTimestamp = new Date().toISOString()
 
   if (result.status === 'error' || result.status === 'failed' || result.status === 'false') {
-    // Refund
-    const refundRef = `REFUND_${Date.now()}`
-    await serviceSupabase.rpc('credit_wallet', {
+    // Refund (idempotent — deterministic reference tied to original debit)
+    await serviceSupabase.rpc('refund_wallet', {
       p_user_id: user.id,
       p_amount: COST,
-      p_reference: refundRef,
+      p_reference: `REFUND_NIN_${user.id}_${parsed.data.nin}`,
       p_description: 'Refund: NIN Verification failed',
     })
 
@@ -139,6 +140,10 @@ export async function POST(req: NextRequest) {
     cost: COST,
     status: 'success',
   }).select('id').single()
+
+  if (insertError) {
+    logger.error('Failed to insert api_call record', insertError)
+  }
 
   await auditLog({
     event: 'nin_verification_success',
