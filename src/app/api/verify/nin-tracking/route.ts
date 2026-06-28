@@ -4,6 +4,8 @@ import { callNINBVNApi } from '@/lib/ninbvn'
 import { serviceSupabase } from '@/lib/supabase/service'
 import { z } from 'zod'
 import { auditLog } from '@/lib/auditLog'
+import { getErrorMessage } from '@/types'
+import logger from '@/lib/logger'
 
 const COST = 200
 
@@ -43,11 +45,11 @@ export async function POST(req: NextRequest) {
   }
 
   const { error: deductError } = await serviceSupabase
-    .rpc('deduct_credits', {
+    .rpc('safe_deduct_credits', {
       p_user_id: user.id,
       p_amount: COST,
       p_description: 'NIN Tracking',
-      p_reference: `TRACKING_${Date.now()}_${user.id.slice(0, 8)}`,
+      p_reference: `TRACKING_${user.id}_${parsed.data.tracking_id}`,
     })
   if (deductError) {
     return NextResponse.json(
@@ -66,16 +68,16 @@ export async function POST(req: NextRequest) {
   let result;
   try {
     result = await callNINBVNApi('nin-tracking', parsed.data);
-  } catch (upstreamError: any) {
-    result = { status: 'error', message: upstreamError?.message || 'Upstream connection failed' };
+  } catch (upstreamError: unknown) {
+    result = { status: 'error', message: getErrorMessage(upstreamError) };
   }
   const consentTimestamp = new Date().toISOString()
 
   if (result.status === 'error' || result.status === 'failed' || result.status === 'false') {
-    await serviceSupabase.rpc('credit_wallet', {
+    await serviceSupabase.rpc('refund_wallet', {
       p_user_id: user.id,
       p_amount: COST,
-      p_reference: `REFUND_${Date.now()}`,
+      p_reference: `REFUND_TRACKING_${user.id}_${parsed.data.tracking_id}`,
       p_description: 'Refund: NIN Tracking failed',
     })
 
@@ -114,7 +116,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: result.message || 'Tracking failed' }, { status: 400 })
   }
 
-  const { data: apiCallRow } = await serviceSupabase.from('api_calls').insert({
+  const { data: apiCallRow, error: insertError } = await serviceSupabase.from('api_calls').insert({
     user_id: user.id,
     action_type: 'nin_tracking',
     label: 'NIN Tracking',
@@ -129,6 +131,10 @@ export async function POST(req: NextRequest) {
     cost: COST,
     status: 'success',
   }).select('id').single()
+
+  if (insertError) {
+    logger.error('Failed to insert api_call record for NIN tracking', insertError)
+  }
 
   await auditLog({
     event: 'nin_tracking_success',

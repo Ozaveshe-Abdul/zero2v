@@ -13,6 +13,12 @@ export async function callNINBVNApi(
     },
     body: JSON.stringify({ ...body, consent: true }),
   })
+
+  if (!res.ok) {
+    const errorBody = await res.json().catch(() => null)
+    throw new Error(errorBody?.message || `Upstream returned ${res.status}`)
+  }
+
   return res.json()
 }
 

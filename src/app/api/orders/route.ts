@@ -4,6 +4,7 @@ import { serviceSupabase } from '@/lib/supabase/service'
 import { callNINBVNApi } from '@/lib/ninbvn'
 import { auditLog } from '@/lib/auditLog'
 import { z } from 'zod'
+import { getErrorMessage } from '@/types'
 
 const COSTS: Record<string, number> = {
   'nin_validation': 6000,
@@ -35,12 +36,12 @@ export async function POST(req: NextRequest) {
     const { service_type, consent, ...restPayload } = parsed.data
     const cost = COSTS[service_type]
 
-    // Deduct
-    const { error: deductError } = await serviceSupabase.rpc('deduct_credits', {
+    // Deduct (idempotent — safe on retry with same service_type + NIN)
+    const { error: deductError } = await serviceSupabase.rpc('safe_deduct_credits', {
       p_user_id: user.id,
       p_amount: cost,
       p_description: `Modification Order: ${service_type.replace(/_/g, ' ')}`,
-      p_reference: `MOD_${Date.now()}_${user.id.slice(0,8)}`
+      p_reference: `MOD_${user.id}_${service_type}_${parsed.data.nin}`
     })
 
     if (deductError) return NextResponse.json({ error: deductError.message }, { status: 402 })
@@ -49,8 +50,8 @@ export async function POST(req: NextRequest) {
     const result = await callNINBVNApi('nin-modification', { service_type, ...restPayload })
 
     if (result.status === 'error' || result.status === 'false') {
-      await serviceSupabase.rpc('credit_wallet', {
-        p_user_id: user.id, p_amount: cost, p_reference: `REF_MOD_${Date.now()}`, p_description: 'Refund: Modification Order Failed'
+      await serviceSupabase.rpc('refund_wallet', {
+        p_user_id: user.id, p_amount: cost, p_reference: `REFUND_MOD_${user.id}_${service_type}_${parsed.data.nin}`, p_description: 'Refund: Modification Order Failed'
       })
       return NextResponse.json({ error: result.message || 'Order failed' }, { status: 400 })
     }
@@ -90,7 +91,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true, reference: referenceId })
 
-  } catch (err: any) {
+  } catch (err: unknown) {
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
   }
 }
